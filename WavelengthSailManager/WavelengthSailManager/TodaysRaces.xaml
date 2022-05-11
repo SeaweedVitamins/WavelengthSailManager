@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    x:Class="WavelengthSailManager.TodaysRaces">
+    <ContentPage.Content>
+        <StackLayout>
+        <Frame BackgroundColor="#231F20" Padding="24" CornerRadius="0">
+            <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
+                <Label.BindingContext>
+                <local:ClockViewModel />
+                </Label.BindingContext>
+            </Label>
+        </Frame>
+       <Button Text="Race 1" Style="{StaticResource buttonStyle}" VerticalOptions="EndAndExpand"/>
+       <Button Text="Race 2" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand"/>
+
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
