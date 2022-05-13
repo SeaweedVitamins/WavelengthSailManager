@@ -19,9 +19,17 @@
     <None Remove="Models\" />
     <None Remove="sqlite-net-pcl" />
     <None Remove="ViewModels\" />
+    <None Remove="Utils\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\PYList.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PYList.csv" />
   </ItemGroup>
 </Project>

@@ -2,12 +2,18 @@
 using System.Threading.Tasks;
 using SQLite;
 using WavelengthSailManager.Models;
+using WavelengthSailManager.Utils;
 
 namespace WavelengthSailManager
 {
     public class DatabaseInterface
     {
         static SQLiteAsyncConnection Database;
+
+        public DatabaseInterface()
+        {
+            Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        }
 
         public static readonly AsyncLazy<DatabaseInterface> Instance = new AsyncLazy<DatabaseInterface>(async () =>
         {
@@ -22,15 +28,12 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
+            DataPreloader preloader = new DataPreloader();
+            preloader.LoadPYHandicaps();
             return instance;
         });
 
-        public DatabaseInterface()
-        {
-            Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-        }
-
-        public Task<int> SaveItemAsync(Race item)
+        public Task<int> SavePYAsync(PY item)
         {
             if (item.ID != 0)
             {

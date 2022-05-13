@@ -19,14 +19,7 @@ namespace WavelengthSailManager
 
         async void onSaveClick()
         {
-            Race insertRace = new Race();
-            insertRace.DateTime = DateTime.Now;
-            insertRace.Category_ID = "LOL";
-            insertRace.Series_ID = "LOL";
-            insertRace.Race_Number = 1;
-            insertRace.ID = 2;
             DatabaseInterface @interface = await DatabaseInterface.Instance;
-            await @interface.SaveItemAsync(insertRace);
         }
     }
 }
