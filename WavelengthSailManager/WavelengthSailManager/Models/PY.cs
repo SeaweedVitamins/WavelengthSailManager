@@ -5,7 +5,7 @@ namespace WavelengthSailManager.Models
 {
     public class PY
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public string Class_Name { get; set; }
         public string Value { get; set; }
     }

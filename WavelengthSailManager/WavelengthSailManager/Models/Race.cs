@@ -11,8 +11,5 @@ namespace WavelengthSailManager.Models
         public string Series_ID { get; set; }
         public string Category_ID { get; set; }
         public DateTime DateTime { get; set; }
-
-        //Im not sure what this is
-        public RaceDetails RaceDetails { get; set; }
     }
 }

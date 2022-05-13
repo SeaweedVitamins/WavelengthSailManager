@@ -5,7 +5,7 @@ namespace WavelengthSailManager.Models
 {
     public class SpecialValues
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public string Name { get; set; }
         public string Value { get; set; }
     }
