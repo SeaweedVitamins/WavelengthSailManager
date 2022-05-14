@@ -14,12 +14,11 @@ namespace WavelengthSailManager
         public MainPage()
         {
             InitializeComponent();
-            onSaveClick();
         }
 
-        async void onSaveClick()
+        private void NavigateToTodaysRaces(object sender, EventArgs e)
         {
-            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            App.Current.MainPage = new TodaysRaces();
         }
     }
 }

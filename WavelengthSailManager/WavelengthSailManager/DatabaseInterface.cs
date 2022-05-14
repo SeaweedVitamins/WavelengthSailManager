@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using WavelengthSailManager.Models;
@@ -30,6 +31,7 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
             preloader.LoadPYHandicaps();
+            preloader.LoadRaceExample();
             return instance;
         });
 
@@ -43,6 +45,25 @@ namespace WavelengthSailManager
             {
                 return Database.InsertAsync(item);
             }
+        }
+
+        public Task<int> SaveRaceAsync(Race item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task<List<Race>> GetTodaysRacesAsync()
+        {
+            var lol = Database.Table<Race>()
+                            .ToListAsync();
+            return lol;
         }
     }
 }

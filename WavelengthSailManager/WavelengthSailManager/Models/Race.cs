@@ -8,8 +8,8 @@ namespace WavelengthSailManager.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public int Race_Number { get; set; }
-        public string Series_ID { get; set; }
-        public string Category_ID { get; set; }
+        public int Series_ID { get; set; }
+        public int Category_ID { get; set; }
         public DateTime DateTime { get; set; }
     }
 }

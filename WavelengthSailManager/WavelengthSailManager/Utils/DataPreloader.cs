@@ -37,5 +37,30 @@ namespace WavelengthSailManager.Utils
                 }
             }
         }
+
+        public async void LoadRaceExample()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var race = new Race();
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.Race.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    race.Race_Number = Convert.ToInt16(values[0]);
+                    race.Series_ID = Convert.ToInt16(values[1]);
+                    race.Category_ID = Convert.ToInt16(values[2]);
+                    race.DateTime = DateTime.Now;
+
+                    await @interface.SaveRaceAsync(race);
+                }
+            }
+        }
     }
 }
