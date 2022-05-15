@@ -11,5 +11,10 @@ namespace WavelengthSailManager.Models
         public int Series_ID { get; set; }
         public int Category_ID { get; set; }
         public DateTime DateTime { get; set; }
+
+        public override string ToString()
+        {
+            return "Race " + Race_Number + ": " + DateTime.Hour +"."+DateTime.Minute;
+        }
     }
 }

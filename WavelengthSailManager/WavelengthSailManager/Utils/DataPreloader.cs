@@ -41,7 +41,6 @@ namespace WavelengthSailManager.Utils
         public async void LoadRaceExample()
         {
             DatabaseInterface @interface = await DatabaseInterface.Instance;
-            var race = new Race();
             var assembly = Assembly.GetExecutingAssembly();
             var resource = "WavelengthSailManager.Resources.Race.csv";
 
@@ -53,6 +52,7 @@ namespace WavelengthSailManager.Utils
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
+                    var race = new Race();
                     race.Race_Number = Convert.ToInt16(values[0]);
                     race.Series_ID = Convert.ToInt16(values[1]);
                     race.Category_ID = Convert.ToInt16(values[2]);

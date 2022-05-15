@@ -24,9 +24,8 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Configuration>();
             await Database.CreateTableAsync<PY>();
             await Database.CreateTableAsync<Race>();
-            await Database.CreateTableAsync<RaceDetails>();
+            await Database.CreateTableAsync<Models.RaceDetails>();
             await Database.CreateTableAsync<RaceResult>();
-            await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
@@ -61,9 +60,8 @@ namespace WavelengthSailManager
 
         public Task<List<Race>> GetTodaysRacesAsync()
         {
-            var lol = Database.Table<Race>()
+            return Database.Table<Race>()
                             .ToListAsync();
-            return lol;
         }
     }
 }

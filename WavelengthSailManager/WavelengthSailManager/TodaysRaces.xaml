@@ -19,7 +19,7 @@
                 </StackLayout.BindingContext>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding Race_Number}" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand"/>
+                        <Button Text="{Binding}" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToRaceDetails"/>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

@@ -18,7 +18,7 @@ namespace WavelengthSailManager.ViewModels
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                this.RaceList = new ObservableCollection<Race>(await @interface.GetTodaysRacesAsync());
+                RaceList = new ObservableCollection<Race>(await @interface.GetTodaysRacesAsync());
             });
         }
 
