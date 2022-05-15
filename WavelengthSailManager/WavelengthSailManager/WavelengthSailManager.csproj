@@ -26,6 +26,7 @@
     <None Remove="Resources\Race.csv" />
     <None Remove="Views\" />
     <None Remove="Xam.Plugins.Settings" />
+    <None Remove="Resources\SailorNames.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -37,6 +38,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\PYList.csv" />
     <EmbeddedResource Include="Resources\Race.csv" />
+    <EmbeddedResource Include="Resources\SailorNames.csv" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">

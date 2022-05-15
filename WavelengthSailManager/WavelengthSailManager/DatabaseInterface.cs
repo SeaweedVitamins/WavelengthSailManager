@@ -29,8 +29,9 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
-            preloader.LoadPYHandicaps();
-            preloader.LoadRaceExample();
+            //preloader.LoadPYHandicaps();
+            //preloader.LoadRaceExample();
+            //preloader.LoadSailorsExample();
             return instance;
         });
 
@@ -58,9 +59,27 @@ namespace WavelengthSailManager
             }
         }
 
+        public Task<int> SaveSailorAsync(Sailor item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
         public Task<List<Race>> GetTodaysRacesAsync()
         {
             return Database.Table<Race>()
+                            .ToListAsync();
+        }
+
+        public Task<List<Sailor>> GetSailorsAsync()
+        {
+            return Database.Table<Sailor>()
                             .ToListAsync();
         }
     }

@@ -18,7 +18,6 @@ namespace WavelengthSailManager.Utils
         public async void LoadPYHandicaps()
         {
             DatabaseInterface @interface = await DatabaseInterface.Instance;
-            var py = new PY();
             var assembly = Assembly.GetExecutingAssembly();
             var resource = "WavelengthSailManager.Resources.PYList.csv";
 
@@ -30,6 +29,7 @@ namespace WavelengthSailManager.Utils
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
+                    var py = new PY();
                     py.Class_Name = values[0];
                     py.Value = values[1];
                     
@@ -59,6 +59,28 @@ namespace WavelengthSailManager.Utils
                     race.DateTime = DateTime.Now;
 
                     await @interface.SaveRaceAsync(race);
+                }
+            }
+        }
+
+        public async void LoadSailorsExample()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.SailorNames.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    var sailor = new Sailor();
+                    sailor.Name = values[0];
+
+                    await @interface.SaveSailorAsync(sailor);
                 }
             }
         }
