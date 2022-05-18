@@ -48,6 +48,39 @@
                 <Picker Grid.Row="6" Grid.Column="0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
                 <Picker Grid.Row="6" Grid.Column="1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
             </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.BindingContext>
+                    <local:WeatherViewModel />
+                </Grid.BindingContext>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">General Weather: </Label>
+                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Main}"/>
+                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Wind Speed: </Label>
+                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding WindSpeed}"/>
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Wind Gusts: </Label>
+                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding WindGusts}"/>
+                <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Direction: </Label>
+                <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Direction}"/>
+                <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Temperature: </Label>
+                <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Temperature}"/>
+                <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Humidity: </Label>
+                <Label Grid.Row="5" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Humidity}"/>
+                <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Pressure: </Label>
+                <Label Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Pressure}"/>
+            </Grid>
             <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Start Today's Races" Style="{StaticResource buttonStyle}" VerticalOptions="EndAndExpand" />
         </Grid>
     </ContentPage.Content>

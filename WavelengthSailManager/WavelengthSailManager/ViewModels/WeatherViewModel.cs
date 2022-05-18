@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WavelengthSailManager.ViewModels
 {
@@ -58,15 +60,19 @@ namespace WavelengthSailManager.ViewModels
 
         public async Task<CurrentWeather> RefreshDataAsync()
         {
-            Weather = new CurrentWeather();
-
             Uri uri = new Uri(string.Format("https://api.openweathermap.org/data/2.5/weather?lat=54.218&lon=-5.8898&appid=cdf654e6fe0368fd8956aafec8f15707&units=imperial", string.Empty));
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    string content = await response.Content.ReadAsStringAsync();
+                    var jsonSerializerSettings = new JsonSerializerSettings();
+                    jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
+
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    CurrentWeather lol = JsonConvert.DeserializeObject<CurrentWeather>(jsonResponse, jsonSerializerSettings);
+                    Console.WriteLine(lol);
+                    //this.Weather = 
                 }
             }
             catch (Exception ex)
