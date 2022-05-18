@@ -31,7 +31,6 @@
     <None Remove="Resources\SailorNames.csv" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Microsoft.CSharp" />
-    <None Remove="Models\NestedWeather\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -39,7 +38,6 @@
     <Folder Include="Utils\" />
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
-    <Folder Include="Models\NestedWeather\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PYList.csv" />

@@ -70,9 +70,8 @@ namespace WavelengthSailManager.ViewModels
                     jsonSerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
 
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    CurrentWeather lol = JsonConvert.DeserializeObject<CurrentWeather>(jsonResponse, jsonSerializerSettings);
-                    Console.WriteLine(lol);
-                    //this.Weather = 
+                    CurrentWeather deserialized = JsonConvert.DeserializeObject<CurrentWeather>(jsonResponse, jsonSerializerSettings);
+                    this.Weather = deserialized;
                 }
             }
             catch (Exception ex)
