@@ -3,12 +3,10 @@ using SQLite;
 
 namespace WavelengthSailManager.Models
 {
-    public class BoatList
+    public class BoatSailor
     {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
         public int Sail_Number { get; set; }
         public string Class_Name { get; set; }
-        public string Sailor_ID { get; set; }
+        public string Sailor_Name { get; set; }
     }
 }

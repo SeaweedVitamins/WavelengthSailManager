@@ -19,7 +19,7 @@ namespace WavelengthSailManager
         public static readonly AsyncLazy<DatabaseInterface> Instance = new AsyncLazy<DatabaseInterface>(async () =>
         {
             var instance = new DatabaseInterface();
-            await Database.CreateTableAsync<BoatList>();
+            await Database.CreateTableAsync<Boat>();
             await Database.CreateTableAsync<Category>();
             await Database.CreateTableAsync<Configuration>();
             await Database.CreateTableAsync<PY>();
@@ -32,6 +32,7 @@ namespace WavelengthSailManager
             //preloader.LoadPYHandicaps();
             //preloader.LoadRaceExample();
             //preloader.LoadSailorsExample();
+            preloader.LoadBoatsExample();
             return instance;
         });
 
@@ -71,6 +72,18 @@ namespace WavelengthSailManager
             }
         }
 
+        public Task<int> SaveBoatAsync(Boat item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
         public Task<List<Race>> GetTodaysRacesAsync()
         {
             return Database.Table<Race>()
@@ -81,6 +94,14 @@ namespace WavelengthSailManager
         {
             return Database.Table<Sailor>()
                             .ToListAsync();
+        }
+
+        public Task<List<BoatSailor>> GetBoatListAsync()
+        {
+            var lol = Database.QueryAsync<BoatSailor>("SELECT Boat.Sail_Number, " +
+                "Boat.Class_Name, Sailor.Name FROM [Boat] INNER JOIN [Sailor] " +
+                "ON Boat.Sailor_ID = Sailor.ID");
+            return lol;
         }
     }
 }

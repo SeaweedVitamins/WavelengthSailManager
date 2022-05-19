@@ -84,5 +84,29 @@ namespace WavelengthSailManager.Utils
                 }
             }
         }
+
+        public async void LoadBoatsExample()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.BoatList.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    var boat = new Boat();
+                    boat.Sail_Number = Convert.ToInt32(values[0]);
+                    boat.Class_Name = values[1];
+                    boat.Sailor_ID = Convert.ToInt16(values[2]);
+
+                    await @interface.SaveBoatAsync(boat);
+                }
+            }
+        }
     }
 }

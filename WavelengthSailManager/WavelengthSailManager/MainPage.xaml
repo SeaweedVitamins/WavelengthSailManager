@@ -13,7 +13,6 @@
         </Frame>
        <Button Text="Start Today's Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToTodaysRaces"/>
        <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand"/>
-
     </StackLayout>
     <ContentPage.Resources>
         <ResourceDictionary>

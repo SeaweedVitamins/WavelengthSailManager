@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    x:Class="WavelengthSailManager.BoatList">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#231F20" Padding="24" CornerRadius="0">
+                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
+                    <Label.BindingContext>
+                        <local:ClockViewModel />
+                    </Label.BindingContext>
+                </Label>
+            </Frame>
+            <Label Style="{StaticResource headerLabelStyle}">Boat Park</Label>
+            <ScrollView>
+                <Grid BindableLayout.ItemsSource="{Binding RaceList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding}" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

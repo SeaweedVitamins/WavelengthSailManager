@@ -15,16 +15,17 @@ namespace WavelengthSailManager
         {
             InitializeComponent();
                 
-            if (Settings.FirstRun)
-            {
+            //if (Settings.FirstRun)
+            //{
                 Task.Run(() => this.loadDatabase()).Wait();
-                Settings.FirstRun = false;
-            }
+              //  Settings.FirstRun = false;
+           // }
         }
 
         public async Task loadDatabase()
         {
             DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var lol = @interface.GetBoatListAsync();
         }
 
         private void NavigateToTodaysRaces(object sender, EventArgs e)

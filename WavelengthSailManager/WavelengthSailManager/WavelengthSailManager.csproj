@@ -31,6 +31,7 @@
     <None Remove="Resources\SailorNames.csv" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Microsoft.CSharp" />
+    <None Remove="Resources\BoatList.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -43,6 +44,7 @@
     <EmbeddedResource Include="Resources\PYList.csv" />
     <EmbeddedResource Include="Resources\Race.csv" />
     <EmbeddedResource Include="Resources\SailorNames.csv" />
+    <EmbeddedResource Include="Resources\BoatList.csv" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
@@ -58,6 +60,9 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="RaceDetailsView.xaml.cs">
       <DependentUpon>RaceDetailsView.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="BoatList.xaml.cs">
+      <DependentUpon>BoatList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
