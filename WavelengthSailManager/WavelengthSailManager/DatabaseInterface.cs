@@ -23,8 +23,8 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Category>();
             await Database.CreateTableAsync<Configuration>();
             await Database.CreateTableAsync<PY>();
+            await Database.CreateTableAsync<RaceDetails>();
             await Database.CreateTableAsync<Race>();
-            await Database.CreateTableAsync<Models.RaceDetails>();
             await Database.CreateTableAsync<RaceResult>();
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();

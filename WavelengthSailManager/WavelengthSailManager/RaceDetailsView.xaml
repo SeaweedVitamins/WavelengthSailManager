@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource headerLabelStyle}">Officials Details</Label>
             <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource headerLabelStyle}" >Weather Details</Label>
-            <Grid Grid.Row="1" Grid.Column="0">
+            <Grid x:Name="PickerGrid" Grid.Row="1" Grid.Column="0">
                 <Grid.BindingContext>
                     <local:PersonnelViewModel />
                 </Grid.BindingContext>
@@ -35,18 +35,18 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Race Officer</Label>
-                <Picker Grid.Row="0" Grid.Column="1" Title="Race Officer Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="pickerRaceOfficer"  Title="Race Officer Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
                 <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Safety Helm</Label>
-                <Picker Grid.Row="1" Grid.Column="1" Title="Safety Helm Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="1" Grid.Column="1" x:Name="pickerSafetyHelm" Title="Safety Helm Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
                 <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Safety Crew</Label>
-                <Picker Grid.Row="2" Grid.Column="1" Title="Safety Crew Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="2" Grid.Column="1" x:Name="pickerSafetyCrew" Title="Safety Crew Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldTitleLabelStyle}">Other Rota Personel (If Applicable)</Label>
-                <Picker Grid.Row="4" Grid.Column="0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
-                <Picker Grid.Row="4" Grid.Column="1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
-                <Picker Grid.Row="5" Grid.Column="0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
-                <Picker Grid.Row="5" Grid.Column="1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
-                <Picker Grid.Row="6" Grid.Column="0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
-                <Picker Grid.Row="6" Grid.Column="1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="4" Grid.Column="0" x:Name="pickerAdditional0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="4" Grid.Column="1" x:Name="pickerAdditional1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="5" Grid.Column="0" x:Name="pickerAdditional2" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="5" Grid.Column="1" x:Name="pickerAdditional3" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="6" Grid.Column="0" x:Name="pickerAdditional4" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
+                <Picker Grid.Row="6" Grid.Column="1" x:Name="pickerAdditional5" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Name}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.BindingContext>
@@ -69,24 +69,24 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">General Weather: </Label>
-                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.weather[0].main}"/>
+                <Label x:Name="GeneralWeatherInfo" Grid.Row="0" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.weather[0].main}"/>
                 <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Wind Speed: </Label>
-                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.speed}"/>
+                <Label x:Name="WindSpeedInfo" Grid.Row="1" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.speed}"/>
                 <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Wind Gusts: </Label>
-                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.gust}"/>
+                <Label x:Name="WindGustsInfo" Grid.Row="2" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.gust}"/>
                 <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Direction: </Label>
-                <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.deg}"/>
+                <Label x:Name="WindDirectionInfo" Grid.Row="3" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.wind.deg}"/>
                 <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Temperature: </Label>
-                <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.temp}"/>
+                <Label x:Name="TemperatureInfo" Grid.Row="4" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.temp}"/>
                 <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Humidity: </Label>
-                <Label Grid.Row="5" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.humidity}"/>
+                <Label x:Name="HumidityInfo" Grid.Row="5" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.humidity}"/>
                 <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Pressure: </Label>
-                <Label Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.pressure}"/>
+                <Label x:Name="PressureInfo" Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.pressure}"/>
                 <RadioButton Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions shown above are correct." />
                 <RadioButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions are different. Complete Below:" />
                 <Editor Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Text="Add Text Here" Style="{StaticResource fieldTextEditorStyle}"/>
             </Grid>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Next" Style="{StaticResource buttonStyle}" VerticalOptions="EndAndExpand" />
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Next" Style="{StaticResource buttonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToBoatSelection"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
