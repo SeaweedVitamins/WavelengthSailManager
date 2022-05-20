@@ -9,7 +9,7 @@ namespace WavelengthSailManager.ViewModels
 {
     class BoatParkViewModel : INotifyPropertyChanged
     {
-        ObservableCollection<BoatSailor> raceList;
+        ObservableCollection<BoatSailor> boatList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -26,19 +26,19 @@ namespace WavelengthSailManager.ViewModels
         {
             set
             {
-                if (raceList != value)
+                if (boatList != value)
                 {
-                    raceList = value;
+                    boatList = value;
 
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this, new PropertyChangedEventArgs("RaceList"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("BoatList"));
                     }
                 }
             }
             get
             {
-                return raceList;
+                return boatList;
             }
         }
     }

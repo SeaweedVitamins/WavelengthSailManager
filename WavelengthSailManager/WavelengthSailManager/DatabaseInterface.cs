@@ -32,7 +32,7 @@ namespace WavelengthSailManager
             //preloader.LoadPYHandicaps();
             //preloader.LoadRaceExample();
             //preloader.LoadSailorsExample();
-            preloader.LoadBoatsExample();
+            //preloader.LoadBoatsExample();
             return instance;
         });
 
@@ -96,12 +96,17 @@ namespace WavelengthSailManager
                             .ToListAsync();
         }
 
+        public Task<List<Boat>> GetBoatsAsync()
+        {
+            return Database.Table<Boat>()
+                            .ToListAsync();
+        }
+
         public Task<List<BoatSailor>> GetBoatListAsync()
         {
-            var lol = Database.QueryAsync<BoatSailor>("SELECT Boat.Sail_Number, " +
-                "Boat.Class_Name, Sailor.Name FROM [Boat] INNER JOIN [Sailor] " +
+            return Database.QueryAsync<BoatSailor>("SELECT Boat.Sail_Number, " +
+                "Boat.Class_Name, Sailor.Sailor_Name FROM [Boat] INNER JOIN [Sailor] " +
                 "ON Boat.Sailor_ID = Sailor.ID");
-            return lol;
         }
     }
 }

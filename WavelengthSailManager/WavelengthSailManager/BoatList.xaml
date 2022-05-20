@@ -15,13 +15,18 @@
             </Frame>
             <Label Style="{StaticResource headerLabelStyle}">Boat Park</Label>
             <ScrollView>
-                <Grid BindableLayout.ItemsSource="{Binding RaceList}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Button Text="{Binding}" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand"/>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </Grid>
+                <ScrollView>
+                    <FlexLayout x:Name="flexLayout" Wrap="Wrap" JustifyContent="SpaceAround" BindableLayout.ItemsSource="{Binding BoatList}">
+                        <FlexLayout.BindingContext>
+                            <local:BoatParkViewModel/>
+                        </FlexLayout.BindingContext>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Button Text="{Binding}" Style="{StaticResource buttonBoatStyle}"/>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>

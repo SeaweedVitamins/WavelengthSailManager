@@ -19,6 +19,6 @@ namespace WavelengthSailManager.Models
         public string Race_Officer { get; set; }
         public string Safety_Helm { get; set; }
         public string Safety_Crew { get; set; }
-        public List<string> Personel_List { get; set; }
+        //public List<string> Personel_List { get; set; }
     }
 }

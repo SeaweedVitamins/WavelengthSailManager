@@ -78,7 +78,7 @@ namespace WavelengthSailManager.Utils
                     var values = line.Split(',');
 
                     var sailor = new Sailor();
-                    sailor.Name = values[0];
+                    sailor.Sailor_Name = values[0];
 
                     await @interface.SaveSailorAsync(sailor);
                 }

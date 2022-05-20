@@ -29,7 +29,7 @@ namespace WavelengthSailManager
             selectedRaceDetails.Safety_Crew = pickerSafetyCrew.Items[pickerSafetyCrew.SelectedIndex];
             selectedRaceDetails.Personel_List = CollectPersonel();*/
 
-            App.Current.MainPage = new TodaysRaces();
+            App.Current.MainPage = new BoatList();
         }
 
         private List<string> CollectPersonel()

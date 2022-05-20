@@ -25,7 +25,6 @@ namespace WavelengthSailManager
         public async Task loadDatabase()
         {
             DatabaseInterface @interface = await DatabaseInterface.Instance;
-            var lol = @interface.GetBoatListAsync();
         }
 
         private void NavigateToTodaysRaces(object sender, EventArgs e)
