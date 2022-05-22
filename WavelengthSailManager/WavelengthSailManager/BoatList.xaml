@@ -28,6 +28,7 @@
                     </FlexLayout>
                 </ScrollView>
             </ScrollView>
+            <Button Text="Next" Style="{StaticResource buttonBoatStyle}" Clicked="NextPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

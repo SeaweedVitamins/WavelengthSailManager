@@ -32,6 +32,9 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Microsoft.CSharp" />
     <None Remove="Resources\BoatList.csv" />
+    <None Remove="Resources\Images\" />
+    <None Remove="Resources\Images\Preparatory.png" />
+    <None Remove="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -39,12 +42,15 @@
     <Folder Include="Utils\" />
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PYList.csv" />
     <EmbeddedResource Include="Resources\Race.csv" />
     <EmbeddedResource Include="Resources\SailorNames.csv" />
     <EmbeddedResource Include="Resources\BoatList.csv" />
+    <EmbeddedResource Include="Resources\Images\Preparatory.png" />
+    <EmbeddedResource Include="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">

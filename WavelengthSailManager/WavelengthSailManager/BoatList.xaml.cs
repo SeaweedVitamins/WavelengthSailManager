@@ -29,5 +29,10 @@ namespace WavelengthSailManager
                 button.BackgroundColor = Color.ForestGreen;
             }
         }
+
+        private void NextPage(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new RaceStart(CompetingBoatList);
+        }
     }
 }

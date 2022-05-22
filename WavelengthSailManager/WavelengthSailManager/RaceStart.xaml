@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+             x:Class="WavelengthSailManager.RaceStart">
+
+    <StackLayout>
+        <Label Text="The current time is:" HorizontalTextAlignment="Center" FontSize="46" VerticalOptions="EndAndExpand"/>
+         <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="100" VerticalOptions="StartAndExpand">
+             <Label.BindingContext>
+                 <local:ClockViewModel />
+             </Label.BindingContext>
+         </Label>
+         <Button Text="Start" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NextPage"/>
+    </StackLayout>
+</ContentPage>
