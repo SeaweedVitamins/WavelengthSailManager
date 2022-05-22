@@ -22,7 +22,7 @@
                         </FlexLayout.BindingContext>
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <Button Text="{Binding}" Style="{StaticResource buttonBoatStyle}"/>
+                                <Button Text="{Binding}" BindingContext="{Binding ID}" Style="{StaticResource buttonBoatStyle}" Clicked="ToggleBoat"/>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>

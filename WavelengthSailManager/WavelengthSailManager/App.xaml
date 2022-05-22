@@ -13,7 +13,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="#BB4430" />
+                <Setter Property="BackgroundColor" Value="OrangeRed" />
             </Style>
             <Style x:Key="buttonBoatStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
@@ -24,7 +24,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="#BB4430" />
+                <Setter Property="BackgroundColor" Value="OrangeRed" />
                 <Setter Property="Margin" Value="0,0,0,10"/>
                 <Setter Property="HeightRequest" Value="100"/>
             </Style>

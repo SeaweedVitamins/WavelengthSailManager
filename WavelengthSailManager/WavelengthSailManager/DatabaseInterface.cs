@@ -104,7 +104,7 @@ namespace WavelengthSailManager
 
         public Task<List<BoatSailor>> GetBoatListAsync()
         {
-            return Database.QueryAsync<BoatSailor>("SELECT Boat.Sail_Number, " +
+            return Database.QueryAsync<BoatSailor>("SELECT Boat.ID, Boat.Sail_Number, " +
                 "Boat.Class_Name, Sailor.Sailor_Name FROM [Boat] INNER JOIN [Sailor] " +
                 "ON Boat.Sailor_ID = Sailor.ID");
         }
