@@ -17,6 +17,7 @@
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.6.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
@@ -35,6 +36,10 @@
     <None Remove="Resources\Images\" />
     <None Remove="Resources\Images\Preparatory.png" />
     <None Remove="Resources\Images\Warning.png" />
+    <None Remove="Extensions\" />
+    <None Remove="Resources\Audio\" />
+    <None Remove="Xam.Plugin.SimpleAudioPlayer" />
+    <None Remove="Resources\Audio\SoundSignal.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -43,6 +48,8 @@
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Resources\Audio\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PYList.csv" />
@@ -51,6 +58,7 @@
     <EmbeddedResource Include="Resources\BoatList.csv" />
     <EmbeddedResource Include="Resources\Images\Preparatory.png" />
     <EmbeddedResource Include="Resources\Images\Warning.png" />
+    <EmbeddedResource Include="Resources\Audio\SoundSignal.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">

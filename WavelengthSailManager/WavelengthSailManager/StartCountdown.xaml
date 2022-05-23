@@ -1,14 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
     x:Class="WavelengthSailManager.StartCountdown">
     <ContentPage.Content>
-         <Label Text="{Binding TimeToStart}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36">
-             <Label.BindingContext>
-                <local:CountdownViewModel />
-             </Label.BindingContext>
-         </Label>
-        <Image></Image>
+        <StackLayout>
+            <StackLayout.BindingContext>
+                 <local:CountdownViewModel />
+            </StackLayout.BindingContext>
+            <Label Text="{Binding TimeToStart}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="100"/>
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Grid.Column="1" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Preparatory.png}" HorizontalOptions="Start" IsVisible="{Binding PreparatoryFlag}"/>
+            <Image Grid.Row="0" Grid.Column="0" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Warning.png}" HorizontalOptions="End" IsVisible="{Binding WarningFlag}"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="5" Style="{StaticResource countdownLabelStyle}" HorizontalOptions="End" IsVisible="{Binding WarningFlag}"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="4" Style="{StaticResource countdownLabelStyle}" HorizontalOptions="Start" IsVisible="{Binding PreparatoryFlag}"/>
+        </Grid>
+        <Button Text="Restart Sequence" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="RestartSequence"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

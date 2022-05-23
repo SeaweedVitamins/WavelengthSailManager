@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
+using System.Reflection;
 using Xamarin.Forms;
 
 namespace WavelengthSailManager.ViewModels
@@ -18,12 +20,12 @@ namespace WavelengthSailManager.ViewModels
 
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                WarningFlag = this.TimeToGo == 300 ? true : false;
-                WarningFlag = this.TimeToGo == 0 ? false : true;
-                PreparatoryFlag = this.TimeToGo == 240 ? true : false;
-                PreparatoryFlag = this.TimeToGo == 60 ? false : true;
-
                 this.TimeToGo--;
+                if (this.TimeToGo == 299) { WarningFlag = true; soundSignal(); }
+                if (this.TimeToGo == 240) { PreparatoryFlag = true; soundSignal(); }
+                if (this.TimeToGo == 60) { WarningFlag = false; soundSignal(); }
+                if (this.TimeToGo == 0) { PreparatoryFlag = false; soundSignal(); }
+                
                 return true;
             });
         }
@@ -95,6 +97,15 @@ namespace WavelengthSailManager.ViewModels
             {
                 return preparatoryFlag;
             }
+        }
+
+        public void soundSignal()
+        {
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            Stream audioSource = assembly.GetManifestResourceStream("WavelengthSailManager.Resources.Audio.SoundSignal.mp3");
+            player.Load(audioSource);
+            player.Play();
         }
     }
 }

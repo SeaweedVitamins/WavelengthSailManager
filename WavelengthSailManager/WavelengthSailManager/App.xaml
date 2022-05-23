@@ -37,6 +37,14 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="Margin" Value="0,20,0,0"/>
             </Style>
+            <Style x:Key="countdownLabelStyle" TargetType="Label">
+                <Setter Property="WidthRequest" Value="400" />
+                <Setter Property="TextColor" Value="#231820" />
+                <Setter Property="FontSize" Value="80" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,20,0,0"/>
+            </Style>
             <Style x:Key="fieldTitleLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#231820" />
                 <Setter Property="FontSize" Value="25" />
