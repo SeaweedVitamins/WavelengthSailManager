@@ -31,7 +31,7 @@ namespace WavelengthSailManager.Utils
 
                     var py = new PY();
                     py.Class_Name = values[0];
-                    py.Value = values[1];
+                    py.Value = Convert.ToInt16(values[1]);
                     
                     await @interface.SavePYAsync(py);
                 }

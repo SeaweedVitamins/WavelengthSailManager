@@ -8,6 +8,6 @@ namespace WavelengthSailManager.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Class_Name { get; set; }
-        public string Value { get; set; }
+        public int Value { get; set; }
     }
 }

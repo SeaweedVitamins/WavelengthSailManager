@@ -110,6 +110,12 @@ namespace WavelengthSailManager
                             .ToListAsync();
         }
 
+        public Task<List<PY>> GetPYsAsync()
+        {
+            return Database.Table<PY>()
+                            .ToListAsync();
+        }
+
         public Task<List<SpecialValues>> GetSpecialAsync()
         {
             return Database.Table<SpecialValues>()

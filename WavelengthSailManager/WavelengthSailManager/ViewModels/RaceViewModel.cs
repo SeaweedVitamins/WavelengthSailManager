@@ -43,13 +43,14 @@ namespace WavelengthSailManager.ViewModels
                 foreach(var x in SpecialCollection) { SpecialList.Add(x.Name); }
 
                 List<Boat> tList = new List<Boat>(await @interface.GetTimingListAsync(competingBoatList));
-                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList });
+                List<int> lapTimeList = new List<int>();
+                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList, Lap_Time_List = lapTimeList });
                 TimingList = new ObservableCollection<Timing>(timingLinqList);
             });
 
             LapCommand = new Command((object context) => {
                 var BoatRacing = (Timing)context;
-                BoatRacing.Latest_Lap_Time = elapsedTime;
+                BoatRacing.Lap_Time_List.Add(elapsedTime);
             });
 
             FinishCommand = new Command((object context) => {
@@ -71,7 +72,7 @@ namespace WavelengthSailManager.ViewModels
             }
             if(finished == true)
             {
-                App.Current.MainPage = new TodaysRaces();
+                App.Current.MainPage = new RaceResults(timingList);
             }
         }
 
