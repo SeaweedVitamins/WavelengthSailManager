@@ -14,7 +14,7 @@ namespace WavelengthSailManager.ViewModels
     {
         ObservableCollection<Results> resultList;
 
-        int placeCount = 1;
+        int placeCount = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
