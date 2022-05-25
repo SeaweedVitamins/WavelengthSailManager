@@ -108,5 +108,28 @@ namespace WavelengthSailManager.Utils
                 }
             }
         }
+
+        public async void LoadSpecialValues()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.Special.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    var special = new SpecialValues();
+                    special.Name = values[0];
+                    special.Value = Convert.ToInt16(values[1]);
+
+                    await @interface.SaveSpecialAsync(special);
+                }
+            }
+        }
     }
 }

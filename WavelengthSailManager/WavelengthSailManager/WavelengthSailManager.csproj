@@ -40,6 +40,7 @@
     <None Remove="Resources\Audio\" />
     <None Remove="Xam.Plugin.SimpleAudioPlayer" />
     <None Remove="Resources\Audio\SoundSignal.mp3" />
+    <None Remove="Resources\Special.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -59,6 +60,7 @@
     <EmbeddedResource Include="Resources\Images\Preparatory.png" />
     <EmbeddedResource Include="Resources\Images\Warning.png" />
     <EmbeddedResource Include="Resources\Audio\SoundSignal.mp3" />
+    <EmbeddedResource Include="Resources\Special.csv" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">

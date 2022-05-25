@@ -51,6 +51,13 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
+            <Style x:Key="gridHeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="BackgroundColor" Value="OrangeRed"/>
+            </Style>
             <Style x:Key="fieldRadioSelectorStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#231820" />
                 <Setter Property="FontSize" Value="25" />

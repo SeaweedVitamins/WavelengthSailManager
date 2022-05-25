@@ -26,6 +26,7 @@
             <Label Grid.Row="1" Grid.Column="1" Text="4" Style="{StaticResource countdownLabelStyle}" HorizontalOptions="Start" IsVisible="{Binding PreparatoryFlag}"/>
         </Grid>
         <Button Text="Restart Sequence" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="RestartSequence"/>
+         <Button Text="Next" Style="{StaticResource buttonBoatStyle}" Clicked="NextPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

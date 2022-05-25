@@ -18,5 +18,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new RaceStart(competingBoatList);
         }
+
+        private void NextPage(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new RaceView(competingBoatList);
+        }
     }
 }

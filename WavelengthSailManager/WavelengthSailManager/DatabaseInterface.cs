@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using SQLite;
 using WavelengthSailManager.Models;
 using WavelengthSailManager.Utils;
+using System.Linq;
 
 namespace WavelengthSailManager
 {
@@ -33,6 +34,7 @@ namespace WavelengthSailManager
             //preloader.LoadRaceExample();
             //preloader.LoadSailorsExample();
             //preloader.LoadBoatsExample();
+            //preloader.LoadSpecialValues();
             return instance;
         });
 
@@ -84,6 +86,18 @@ namespace WavelengthSailManager
             }
         }
 
+        public Task<int> SaveSpecialAsync(SpecialValues item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
         public Task<List<Race>> GetTodaysRacesAsync()
         {
             return Database.Table<Race>()
@@ -93,6 +107,12 @@ namespace WavelengthSailManager
         public Task<List<Sailor>> GetSailorsAsync()
         {
             return Database.Table<Sailor>()
+                            .ToListAsync();
+        }
+
+        public Task<List<SpecialValues>> GetSpecialAsync()
+        {
+            return Database.Table<SpecialValues>()
                             .ToListAsync();
         }
 
@@ -107,6 +127,13 @@ namespace WavelengthSailManager
             return Database.QueryAsync<BoatSailor>("SELECT Boat.ID, Boat.Sail_Number, " +
                 "Boat.Class_Name, Sailor.Sailor_Name FROM [Boat] INNER JOIN [Sailor] " +
                 "ON Boat.Sailor_ID = Sailor.ID");
+        }
+
+        public Task<List<Boat>> GetTimingListAsync(List<int> competingBoatList)
+        {
+            return Database.Table<Boat>()
+                    .Where(t => competingBoatList.Contains(t.ID))
+                    .ToListAsync();
         }
     }
 }
