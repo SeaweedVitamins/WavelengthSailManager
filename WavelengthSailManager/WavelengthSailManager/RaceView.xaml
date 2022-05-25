@@ -7,11 +7,11 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding TimeElapsed}" Style="{StaticResource headerLabelStyle}"/>
-            <ScrollView>
+            <ScrollView x:Name="ScrollLayout">
                     <FlexLayout x:Name="flexLayout" Wrap="Wrap" JustifyContent="SpaceAround" BindableLayout.ItemsSource="{Binding TimingList}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <Grid WidthRequest="400">
+                                <Grid x:Name="Grid" WidthRequest="400">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
@@ -22,9 +22,9 @@
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                                    <Button Grid.Row="1" Grid.Column="0" Text="Lap" Style="{StaticResource buttonStyle}" Command="{Binding LapCommand}" BackgroundColor="Green"/>
-                                    <Button Grid.Row="1" Grid.Column="1" Text="Finish" Style="{StaticResource buttonStyle}" Command="{Binding FinishCommand}" BackgroundColor="Blue"/>
-                                    <Picker Grid.Row="1" Grid.Column="2" x:Name="PickerSpecial" Title="Special" Style="{StaticResource picker}" ItemsSource="{Binding Special_List}"/>
+                                    <Button Grid.Row="1" Grid.Column="0" Text="Lap" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.LapCommand, Source={x:Reference ScrollLayout}}" CommandParameter="{Binding}" BackgroundColor="Green"/>
+                                    <Button Grid.Row="1" Grid.Column="1" Text="Finish" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.FinishCommand, Source={x:Reference ScrollLayout}}" CommandParameter="{Binding}" BackgroundColor="Blue"/>
+                                    <Picker Grid.Row="1" Grid.Column="2" x:Name="PickerSpecial" Title="Special" Style="{StaticResource picker}" ItemsSource="{Binding Special_List}" SelectedItem="{Binding Special_Classification_Assigned, Mode=TwoWay}"/>
                                 </Grid>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>

@@ -13,13 +13,15 @@ namespace WavelengthSailManager.ViewModels
     {
         int elapsedTime;
 
-        List<Timing> timingList;
+        ObservableCollection<Timing> timingList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand LapCommand { get; }
 
         public ICommand FinishCommand { get; }
+
+        public ICommand SpecialSelectedCommand { get; }
 
         public RaceViewModel(List<int> competingBoatList)
         {
@@ -41,14 +43,39 @@ namespace WavelengthSailManager.ViewModels
                 foreach(var x in SpecialCollection) { SpecialList.Add(x.Name); }
 
                 List<Boat> tList = new List<Boat>(await @interface.GetTimingListAsync(competingBoatList));
-                TimingList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList });
+                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList });
+                TimingList = new ObservableCollection<Timing>(timingLinqList);
             });
 
-            LapCommand = new Command(() => {  });
-            FinishCommand = new Command(() => { });
+            LapCommand = new Command((object context) => {
+                var BoatRacing = (Timing)context;
+                BoatRacing.Latest_Lap_Time = elapsedTime;
+            });
+
+            FinishCommand = new Command((object context) => {
+                var BoatRacing = (Timing)context;
+                BoatRacing.Finish_Time = elapsedTime;
+                checkIfRaceOver();
+            });
         }
 
-        public List<Timing> TimingList
+        public void checkIfRaceOver()
+        {
+            bool finished = true;
+            foreach(var x in timingList)
+            {
+                if (x.Finish_Time == 0 && x.Special_Classification_Assigned == null)
+                {
+                    finished = false;
+                }
+            }
+            if(finished == true)
+            {
+                App.Current.MainPage = new TodaysRaces();
+            }
+        }
+
+        public ObservableCollection<Timing> TimingList
         {
             set
             {

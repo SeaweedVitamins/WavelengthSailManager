@@ -21,5 +21,9 @@ namespace WavelengthSailManager
         {
            // App.Current.MainPage = new RaceStart(CompetingBoatList);
         }
+
+        void PickerSpecial_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }
