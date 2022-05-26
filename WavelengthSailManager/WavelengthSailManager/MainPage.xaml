@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+             xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
              x:Class="WavelengthSailManager.MainPage">
 
     <StackLayout>
         <Frame Style="{StaticResource ClockStyle}">
-            <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
+            <Label Text="{Binding DateTime, StringFormat='{0:T}'}" Style="{StaticResource ClockLabelStyle}">
                 <Label.BindingContext>
                 <local:ClockViewModel />
                 </Label.BindingContext>
             </Label>
         </Frame>
-        <BoxView HeightRequest="10" BackgroundColor="DarkBlue">
+        <BoxView HeightRequest="10">
             <BoxView.Background>
-                <LinearGradientBrush StartPoint="0,0"
-                                     EndPoint="1,0">
-                    <GradientStop Color="DeepSkyBlue"
-                                  Offset="0.1"/>
-                    <GradientStop Color="SteelBlue"
-                                  Offset="1.0"/>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                    <GradientStop Color="SteelBlue" Offset="1.0"/>
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
        <Button Text="Start Today's Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToTodaysRaces"/>
        <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand"/>
+       <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Cog.png}" HeightRequest="70" Margin="0,0,0,20"/>
     </StackLayout>
     <ContentPage.Resources>
         <ResourceDictionary>

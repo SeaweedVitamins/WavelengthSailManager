@@ -5,24 +5,44 @@
     xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
     x:Class="WavelengthSailManager.TodaysRaces">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="#231F20" Padding="24" CornerRadius="0">
-                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
-                    <Label.BindingContext>
-                        <local:ClockViewModel />
-                    </Label.BindingContext>
-                </Label>
-            </Frame>
+        
+            <StackLayout>
+            <Frame Style="{StaticResource ClockStyle}">
+            <Label Text="{Binding DateTime, StringFormat='{0:T}'}" Style="{StaticResource ClockLabelStyle}">
+                <Label.BindingContext>
+                <local:ClockViewModel />
+                </Label.BindingContext>
+            </Label>
+        </Frame>
+        <BoxView HeightRequest="10">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                    <GradientStop Color="SteelBlue" Offset="1.0"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+                <ScrollView Padding="0,10,0,0">
             <StackLayout BindableLayout.ItemsSource="{Binding RaceList}">
                 <StackLayout.BindingContext>
                     <local:TodaysRacesViewModel/>
                 </StackLayout.BindingContext>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding}" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToRaceDetails"/>
+                        <Button Text="{Binding}" Style="{StaticResource selectionButtonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToRaceDetails"/>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
+                    </ScrollView>
     </StackLayout>
+        
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="selectionButtonStyle" TargetType="Button" BasedOn="{StaticResource buttonStyle}">
+                <Setter Property="Margin" Value="0,10,0,10" />
+                <Setter Property="HeightRequest" Value="80" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>
