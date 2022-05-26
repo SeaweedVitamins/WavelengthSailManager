@@ -4,6 +4,15 @@
              x:Class="WavelengthSailManager.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Style x:Key="ClockStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#2a1d6e" />
+                <Setter Property="Padding" Value="24"></Setter>
+            </Style>
+            <Style x:Key="ClockLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="FontSize" Value="36"></Setter>
+            </Style>
             <Style x:Key="buttonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
@@ -13,7 +22,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="OrangeRed" />
+                <Setter Property="BackgroundColor" Value="DeepSkyBlue" />
             </Style>
             <Style x:Key="buttonBoatStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="Center" />
@@ -24,7 +33,7 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="BackgroundColor" Value="OrangeRed" />
+                <Setter Property="BackgroundColor" Value="DeepSkyBlue" />
                 <Setter Property="Margin" Value="0,0,0,10"/>
                 <Setter Property="HeightRequest" Value="100"/>
             </Style>
@@ -51,12 +60,18 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
+            <Style x:Key="resultGridLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#231820" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
             <Style x:Key="gridHeaderLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="BackgroundColor" Value="OrangeRed"/>
+                <Setter Property="BackgroundColor" Value="DeepSkyBlue"/>
             </Style>
             <Style x:Key="fieldRadioSelectorStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#231820" />

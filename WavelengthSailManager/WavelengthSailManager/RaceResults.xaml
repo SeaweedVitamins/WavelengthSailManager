@@ -5,6 +5,28 @@
     x:Class="WavelengthSailManager.RaceResults">
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding ResultList}">
+            <CollectionView.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Place" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Helm" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="3" Text="Class" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="4" Text="Laps" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="5" Text="Finish Time" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="6" Text="Corrected Time" Style="{StaticResource resultGridLabelStyle}"/>
+                </Grid>
+            </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -12,20 +34,20 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Number_Of_Laps}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Finish_Time}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                        <Label Grid.Row="0" Grid.Column="6" Text="{Binding Corrected_Time}" Style="{StaticResource gridHeaderLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Number_Of_Laps}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Finish_Time}" Style="{StaticResource resultGridLabelStyle}"/>
+                        <Label Grid.Row="0" Grid.Column="6" Text="{Binding Corrected_Time}" Style="{StaticResource resultGridLabelStyle}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

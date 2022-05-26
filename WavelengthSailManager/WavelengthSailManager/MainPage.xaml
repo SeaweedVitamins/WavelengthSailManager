@@ -4,13 +4,24 @@
              x:Class="WavelengthSailManager.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="#231F20" Padding="24" CornerRadius="0">
+        <Frame Style="{StaticResource ClockStyle}">
             <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
                 <Label.BindingContext>
                 <local:ClockViewModel />
                 </Label.BindingContext>
             </Label>
         </Frame>
+        <BoxView HeightRequest="10" BackgroundColor="DarkBlue">
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,0">
+                    <GradientStop Color="DeepSkyBlue"
+                                  Offset="0.1"/>
+                    <GradientStop Color="SteelBlue"
+                                  Offset="1.0"/>
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
        <Button Text="Start Today's Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToTodaysRaces"/>
        <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand"/>
     </StackLayout>
