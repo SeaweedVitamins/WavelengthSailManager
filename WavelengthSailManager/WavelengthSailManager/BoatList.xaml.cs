@@ -22,7 +22,7 @@ namespace WavelengthSailManager
             if (CompetingBoatList.Contains(boatID))
             {
                 CompetingBoatList.Remove(boatID);
-                button.BackgroundColor = Color.OrangeRed;
+                button.BackgroundColor = Color.DeepSkyBlue;
             } else
             {
                 CompetingBoatList.Add(boatID);

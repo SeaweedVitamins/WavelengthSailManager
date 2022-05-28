@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using WavelengthSailManager.ViewModels;
 using Xamarin.Forms;
 
 namespace WavelengthSailManager
@@ -12,6 +12,7 @@ namespace WavelengthSailManager
         {
             this.competingBoatList = competingBoatList;
             InitializeComponent();
+            BindingContext = new CountdownViewModel(competingBoatList);
         }
 
         private void RestartSequence(object sender, EventArgs e)

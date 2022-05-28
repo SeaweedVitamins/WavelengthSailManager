@@ -6,8 +6,9 @@
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding ResultList}">
             <CollectionView.Header>
-                <Grid>
+                <Grid Margin="30,10,0,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -18,18 +19,19 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Place" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="2" Text="Helm" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="3" Text="Class" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="4" Text="Laps" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="5" Text="Finish Time" Style="{StaticResource resultGridLabelStyle}"/>
-                    <Label Grid.Row="0" Grid.Column="6" Text="Corrected Time" Style="{StaticResource resultGridLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Results" Style="{StaticResource headerLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Place" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="2" Text="Helm" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="3" Text="Class" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="4" Text="Laps" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="5" Text="Finish Time" Style="{StaticResource resultHeaderLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="6" Text="Corrected" Style="{StaticResource resultHeaderLabelStyle}"/>
                 </Grid>
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Margin="30,0,30,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>

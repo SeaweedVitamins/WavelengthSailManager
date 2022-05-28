@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using WavelengthSailManager.ViewModels;
 using Xamarin.Forms;
@@ -17,13 +18,33 @@ namespace WavelengthSailManager
             BindingContext = new RaceViewModel(competingBoatList);
         }
 
-        private void NextPage(object sender, EventArgs e)
+        private void BoatFinished(object sender, EventArgs e)
         {
-           // App.Current.MainPage = new RaceStart(CompetingBoatList);
+            var fb = (Button)sender;
+            var mainGrid = (Grid)fb.Parent;
+            foreach(var x in mainGrid.Children)
+            {
+                if(x.GetType() != typeof(Label))
+                {
+                    x.IsEnabled = false;
+                    x.BackgroundColor = Color.LightGray;
+                }
+            }
         }
 
-        void PickerSpecial_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        private void BoatLapped(object sender, EventArgs e)
         {
+            var lb = (Button)sender;
+            lb.BackgroundColor = Color.Orange;
+            int duration = 2;
+
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                duration--;
+                if (duration == 0) { lb.BackgroundColor = Color.Green; return false; }
+
+                return true;
+            });
         }
     }
 }

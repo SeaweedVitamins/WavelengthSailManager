@@ -6,14 +6,22 @@
     x:Class="WavelengthSailManager.BoatList">
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#231F20" Padding="24" CornerRadius="0">
-                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="White" FontSize="36">
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" Style="{StaticResource ClockLabelStyle}">
                     <Label.BindingContext>
-                        <local:ClockViewModel />
+                    <local:ClockViewModel />
                     </Label.BindingContext>
                 </Label>
             </Frame>
-            <Label Style="{StaticResource headerLabelStyle}">Boat Park</Label>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Label Style="{StaticResource headerLabelStyle}" Margin="-10,0,0,0" >Boat Park</Label>
             <ScrollView>
                 <ScrollView>
                     <FlexLayout x:Name="flexLayout" Wrap="Wrap" JustifyContent="SpaceAround" BindableLayout.ItemsSource="{Binding BoatList}">
@@ -28,7 +36,7 @@
                     </FlexLayout>
                 </ScrollView>
             </ScrollView>
-            <Button Text="Next" Style="{StaticResource buttonBoatStyle}" Clicked="NextPage"/>
+            <Button Text="Next" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NextPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

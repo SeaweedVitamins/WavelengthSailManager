@@ -79,11 +79,20 @@ namespace WavelengthSailManager.ViewModels
 
             var list = timingList.ToList<Timing>();
             list = timingList.OrderBy(t => t.Corrected_Time).ToList();
+            for(int i=0; i < list.Count; i++)
+            {
+                if (list[i].Special_Classification_Assigned != null)
+                {
+                    var item = list[i];
+                    list.RemoveAt(i);
+                    list.Add(item);
+                }
+            }
 
             
             var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned), Sail_Number = x.Sail_Number,
                 Sailor_Name = getSailorName(sailorList, x.ID), Class_Name = x.Class_Name, Number_Of_Laps = getNumberOfLaps(x.Lap_Time_List.Count),
-                Finish_Time = x.Finish_Time, Corrected_Time = ConvertTimeToString(x.Corrected_Time)});
+                Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time)});
 
             ObservableCollection<Results> results = new ObservableCollection<Results>(resultsLinqList);
             return results;

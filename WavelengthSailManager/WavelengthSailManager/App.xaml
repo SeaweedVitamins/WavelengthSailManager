@@ -60,9 +60,16 @@
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,5,0,0"/>
             </Style>
             <Style x:Key="resultGridLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#231820" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="resultHeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#008cff" />
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -72,7 +79,7 @@
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="BackgroundColor" Value="DeepSkyBlue"/>
+                <Setter Property="BackgroundColor" Value="#008cff"/>
             </Style>
             <Style x:Key="fieldRadioSelectorStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#231820" />
@@ -89,6 +96,7 @@
                 <Setter Property="FontSize" Value="25" />
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="10,0,10,0"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

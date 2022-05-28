@@ -8,7 +8,7 @@ namespace WavelengthSailManager.Models
         public string Sailor_Name { get; set; }
         public string Class_Name { get; set; }
         public int Number_Of_Laps { get; set; }
-        public int Finish_Time { get; set; }
+        public string Finish_Time { get; set; }
         public string Corrected_Time { get; set; }
     }
 }
