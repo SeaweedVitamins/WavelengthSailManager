@@ -11,11 +11,11 @@ namespace WavelengthSailManager
     {
         //public List<int> competingBoatList = new List<int>();
 
-        public RaceView(List<int> competingBoatList)
+        public RaceView(List<int> competingBoatList, Race selectedRace)
         {
             //this.competingBoatList = competingBoatList;
             InitializeComponent();
-            BindingContext = new RaceViewModel(competingBoatList);
+            BindingContext = new RaceViewModel(competingBoatList, selectedRace);
         }
 
         private void BoatFinished(object sender, EventArgs e)

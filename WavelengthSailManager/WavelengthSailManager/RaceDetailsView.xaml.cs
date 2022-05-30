@@ -38,7 +38,7 @@ namespace WavelengthSailManager
                 await @interface.SaveRaceAsync(selectedRace);
             });
 
-            App.Current.MainPage = new BoatList();
+            App.Current.MainPage = new BoatList(selectedRace);
         }
 
         private string CollectPersonel()

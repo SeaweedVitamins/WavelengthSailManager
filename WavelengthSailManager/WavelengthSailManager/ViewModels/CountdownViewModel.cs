@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using WavelengthSailManager.Models;
 using Xamarin.Forms;
 
 namespace WavelengthSailManager.ViewModels
@@ -16,7 +17,7 @@ namespace WavelengthSailManager.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public CountdownViewModel(List<int> competingBoatList)
+        public CountdownViewModel(List<int> competingBoatList, Race selectedRace)
         {
             this.TimeToGo = 300;
 
@@ -28,7 +29,7 @@ namespace WavelengthSailManager.ViewModels
                 if (this.TimeToGo == 60) { WarningFlag = false; soundSignal(); }
                 if (this.TimeToGo == 0) {
                     PreparatoryFlag = false; soundSignal();
-                    App.Current.MainPage = new RaceView(competingBoatList);
+                    App.Current.MainPage = new RaceView(competingBoatList, selectedRace);
                     return false;
                 }
                 

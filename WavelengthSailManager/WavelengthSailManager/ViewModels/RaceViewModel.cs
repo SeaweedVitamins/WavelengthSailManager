@@ -23,7 +23,7 @@ namespace WavelengthSailManager.ViewModels
 
         public ICommand SpecialSelectedCommand { get; }
 
-        public RaceViewModel(List<int> competingBoatList)
+        public RaceViewModel(List<int> competingBoatList, Race selectedRace)
         {
             this.ElapsedTime = 0;
 
@@ -55,11 +55,11 @@ namespace WavelengthSailManager.ViewModels
             FinishCommand = new Command((object context) => {
                 var BoatRacing = (Timing)context;
                 BoatRacing.Finish_Time = elapsedTime;
-                checkIfRaceOver();
+                checkIfRaceOver(selectedRace);
             });
         }
 
-        public void checkIfRaceOver()
+        public void checkIfRaceOver(Race selectedRace)
         {
             bool finished = true;
             foreach(var x in timingList)
@@ -71,7 +71,7 @@ namespace WavelengthSailManager.ViewModels
             }
             if(finished == true)
             {
-                App.Current.MainPage = new RaceResults(timingList);
+                App.Current.MainPage = new RaceResults(timingList, selectedRace);
             }
         }
 

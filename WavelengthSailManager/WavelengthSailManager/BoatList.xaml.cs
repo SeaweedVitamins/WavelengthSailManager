@@ -9,8 +9,11 @@ namespace WavelengthSailManager
     {
         public List<int> CompetingBoatList = new List<int>();
 
-        public BoatList()
+        Race selectedRace;
+
+        public BoatList(Race selectedRace)
         {
+            this.selectedRace = selectedRace;
             InitializeComponent();
         }
 
@@ -32,7 +35,7 @@ namespace WavelengthSailManager
 
         private void NextPage(object sender, EventArgs e)
         {
-            App.Current.MainPage = new RaceStart(CompetingBoatList);
+            App.Current.MainPage = new RaceStart(CompetingBoatList, selectedRace);
         }
     }
 }

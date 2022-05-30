@@ -18,14 +18,14 @@ namespace WavelengthSailManager.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public RaceResultsViewModel(ObservableCollection<Timing> timingList)
+        public RaceResultsViewModel(ObservableCollection<Timing> timingList, Race selectedRace)
         {
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 ObservableCollection<PY> pyList = new ObservableCollection<PY>(await @interface.GetPYsAsync());
                 ObservableCollection<BoatSailor> sailorList = new ObservableCollection<BoatSailor>(await @interface.GetBoatListAsync());
-                ResultList = calculateResults(timingList, pyList, sailorList);
+                ResultList = calculateResults(timingList, pyList, sailorList, selectedRace);
                 foreach(var Result in ResultList)
                 {
 
@@ -54,7 +54,7 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
-        public ObservableCollection<Results> calculateResults(ObservableCollection<Timing> timingList, ObservableCollection<PY> pyList, ObservableCollection<BoatSailor> sailorList)
+        public ObservableCollection<Results> calculateResults(ObservableCollection<Timing> timingList, ObservableCollection<PY> pyList, ObservableCollection<BoatSailor> sailorList, Race selectedRace)
         {
             int maxNumberOfLaps = 1;
             foreach(var x in timingList)
@@ -95,7 +95,7 @@ namespace WavelengthSailManager.ViewModels
             }
 
             
-            var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned), Sail_Number = x.Sail_Number,
+            var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned), Race_ID = selectedRace.ID, Sail_Number = x.Sail_Number,
                 Sailor_Name = getSailorName(sailorList, x.ID), Class_Name = x.Class_Name, Number_Of_Laps = getNumberOfLaps(x.Lap_Time_List.Count),
                 Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time), Boat_ID = x.ID});
 

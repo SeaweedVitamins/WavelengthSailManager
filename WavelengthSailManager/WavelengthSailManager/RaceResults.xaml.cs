@@ -9,10 +9,10 @@ namespace WavelengthSailManager
 {
     public partial class RaceResults : ContentPage
     {
-        public RaceResults(ObservableCollection<Timing> timingList)
+        public RaceResults(ObservableCollection<Timing> timingList, Race selectedRace)
         {
             InitializeComponent();
-            BindingContext = new RaceResultsViewModel(timingList);
+            BindingContext = new RaceResultsViewModel(timingList, selectedRace);
         }
     }
 }
