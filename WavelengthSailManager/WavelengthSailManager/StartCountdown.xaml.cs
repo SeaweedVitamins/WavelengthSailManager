@@ -13,6 +13,7 @@ namespace WavelengthSailManager
 
         public StartCountdown(List<int> competingBoatList, Race selectedRace)
         {
+            this.selectedRace = selectedRace;
             this.competingBoatList = competingBoatList;
             InitializeComponent();
             BindingContext = new CountdownViewModel(competingBoatList, selectedRace);

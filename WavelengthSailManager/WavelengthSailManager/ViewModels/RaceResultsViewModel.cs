@@ -28,7 +28,6 @@ namespace WavelengthSailManager.ViewModels
                 ResultList = calculateResults(timingList, pyList, sailorList, selectedRace);
                 foreach(var Result in ResultList)
                 {
-
                     await @interface.SaveResultsAsync(Result);
                 }
             });
