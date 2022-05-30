@@ -26,7 +26,7 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<PY>();
             await Database.CreateTableAsync<RaceDetails>();
             await Database.CreateTableAsync<Race>();
-            await Database.CreateTableAsync<RaceResult>();
+            await Database.CreateTableAsync<Results>();
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
@@ -51,6 +51,30 @@ namespace WavelengthSailManager
         }
 
         public Task<int> SaveRaceAsync(Race item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> SaveResultsAsync(Results item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> SaveRaceDetailsAsync(RaceDetails item)
         {
             if (item.ID != 0)
             {
@@ -126,6 +150,11 @@ namespace WavelengthSailManager
         {
             return Database.Table<Boat>()
                             .ToListAsync();
+        }
+
+        public Task<List<int>> GetTopRaceDetailsKey()
+        {
+            return Database.QueryAsync<int>("SELECT MAX(id) from [RaceDetails]");
         }
 
         public Task<List<BoatSailor>> GetBoatListAsync()

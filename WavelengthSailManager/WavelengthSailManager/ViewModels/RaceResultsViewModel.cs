@@ -26,6 +26,11 @@ namespace WavelengthSailManager.ViewModels
                 ObservableCollection<PY> pyList = new ObservableCollection<PY>(await @interface.GetPYsAsync());
                 ObservableCollection<BoatSailor> sailorList = new ObservableCollection<BoatSailor>(await @interface.GetBoatListAsync());
                 ResultList = calculateResults(timingList, pyList, sailorList);
+                foreach(var Result in ResultList)
+                {
+
+                    await @interface.SaveResultsAsync(Result);
+                }
             });
         }
 
@@ -92,7 +97,7 @@ namespace WavelengthSailManager.ViewModels
             
             var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned), Sail_Number = x.Sail_Number,
                 Sailor_Name = getSailorName(sailorList, x.ID), Class_Name = x.Class_Name, Number_Of_Laps = getNumberOfLaps(x.Lap_Time_List.Count),
-                Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time)});
+                Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time), Boat_ID = x.ID});
 
             ObservableCollection<Results> results = new ObservableCollection<Results>(resultsLinqList);
             return results;

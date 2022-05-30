@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using Xamarin.Forms;
 
@@ -17,7 +18,7 @@ namespace WavelengthSailManager
 
         private void NavigateToBoatSelection(object sender, EventArgs e)
         {
-            /*selectedRaceDetails.GeneralWeather = GeneralWeatherInfo.Text;
+            selectedRaceDetails.GeneralWeather = GeneralWeatherInfo.Text;
             selectedRaceDetails.Temperature = Convert.ToDouble(TemperatureInfo.Text);
             selectedRaceDetails.Windspeed = Convert.ToDouble(WindSpeedInfo.Text);
             selectedRaceDetails.WindGusts = Convert.ToDouble(WindGustsInfo.Text);
@@ -27,21 +28,49 @@ namespace WavelengthSailManager
             selectedRaceDetails.Race_Officer = pickerRaceOfficer.Items[pickerRaceOfficer.SelectedIndex];
             selectedRaceDetails.Safety_Helm = pickerSafetyHelm.Items[pickerSafetyHelm.SelectedIndex];
             selectedRaceDetails.Safety_Crew = pickerSafetyCrew.Items[pickerSafetyCrew.SelectedIndex];
-            selectedRaceDetails.Personel_List = CollectPersonel();*/
+            selectedRaceDetails.Personel_List = CollectPersonel();
+
+            Task.Run(async () =>
+            {
+                DatabaseInterface @interface = await DatabaseInterface.Instance;
+                await @interface.SaveRaceDetailsAsync(selectedRaceDetails);
+                selectedRace.Race_Details_ID = selectedRaceDetails.ID;
+                await @interface.SaveRaceAsync(selectedRace);
+            });
 
             App.Current.MainPage = new BoatList();
         }
 
-        private List<string> CollectPersonel()
+        private string CollectPersonel()
         {
+            string personelCSV = "";
             List<string> collectionList = new List<string>();
-            collectionList.Add(pickerAdditional0.Items[pickerAdditional0.SelectedIndex]);
-            collectionList.Add(pickerAdditional1.Items[pickerAdditional1.SelectedIndex]);
-            collectionList.Add(pickerAdditional2.Items[pickerAdditional2.SelectedIndex]);
-            collectionList.Add(pickerAdditional3.Items[pickerAdditional3.SelectedIndex]);
-            collectionList.Add(pickerAdditional4.Items[pickerAdditional4.SelectedIndex]);
-            collectionList.Add(pickerAdditional5.Items[pickerAdditional5.SelectedIndex]);
-            return collectionList;
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional0);
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional1);
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional2);
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional3);
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional4);
+            collectionList = getAndAppendPickerValue(collectionList, pickerAdditional5);
+
+            foreach(string x in collectionList)
+            {
+                personelCSV += (x+",");
+            }
+
+            return personelCSV;
+        }
+
+        private List<string> getAndAppendPickerValue(List<string> collectionList,Picker picker)
+        {
+            if(picker.SelectedIndex == -1)
+            {
+                return collectionList;
+            }
+            else
+            {
+                collectionList.Add(picker.Items[picker.SelectedIndex]);
+                return collectionList;
+            }
         }
     }
 }
