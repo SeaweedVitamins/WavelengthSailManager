@@ -65,22 +65,8 @@
     <EmbeddedResource Include="Resources\Images\Cog.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="TodaysRaces.xaml.cs">
-      <DependentUpon>TodaysRaces.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\RaceDetailsView.xaml.cs">
       <DependentUpon>RaceDetailsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="RaceDetailsView.xaml.cs">
-      <DependentUpon>RaceDetailsView.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="BoatList.xaml.cs">
-      <DependentUpon>BoatList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
