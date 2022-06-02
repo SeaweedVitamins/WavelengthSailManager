@@ -31,5 +31,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new TodaysRaces();
         }
+
+        private void NavigateToAdminMenu(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new AdminMenuView();
+        }
     }
 }

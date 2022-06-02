@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
              xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
-             x:Class="WavelengthSailManager.MainPage">
+             x:Class="WavelengthSailManager.AdminMenuView">
 
     <StackLayout>
         <Frame Style="{StaticResource ClockStyle}">
@@ -21,11 +21,14 @@
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
-       <Button Text="Start Today's Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToTodaysRaces"/>
-       <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand"/>
-       <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Cog.png}" HeightRequest="70" Margin="0,0,0,20">
-           <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="NavigateToAdminMenu" NumberOfTapsRequired="1" />
+       <Button Text="Race Manager" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="Boat Park" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="PY Settings" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="Platform Configuration" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="Metrics" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
+        <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
        </Image>
     </StackLayout>
