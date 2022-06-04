@@ -20,5 +20,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new MainPage();
         }
+
+        private void NavigateRaceManagement(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new RaceManagement();
+        }
     }
 }

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    x:Class="WavelengthSailManager.RaceManagement">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
+                <CollectionView ItemsSource="{Binding RaceManagementList}">
+                    <CollectionView.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Management" Style="{StaticResource headerLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="Race Number" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Series" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Date" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="3" Text="Category" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="4" Text="Special Event" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="5" Text="Delete" Style="{StaticResource resultHeaderLabelStyle}"/>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2,0,2,0" BackgroundColor="Black" ColumnSpacing="2" Padding="2,0,2,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Race_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateTime}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Series_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Category_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Special_Event}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="5" Text="X" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+            <Grid Margin="0,-15,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="New Series" Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewSeriesAsync"/>
+                <Button Text="New Category" Grid.Row="0" Grid.Column="1" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewCategoryAsync"/>
+                <Button Text="New Race" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

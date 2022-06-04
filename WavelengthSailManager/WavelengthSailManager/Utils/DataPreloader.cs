@@ -131,5 +131,49 @@ namespace WavelengthSailManager.Utils
                 }
             }
         }
+
+        public async void LoadCategoryValues()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.CategoryList.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    var category = new Category();
+                    category.Category_Name = values[0];
+
+                    await @interface.SaveCategoryAsync(category);
+                }
+            }
+        }
+
+        public async void LoadSeriesValues()
+        {
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "WavelengthSailManager.Resources.SeriesList.csv";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    var series = new Series();
+                    series.Series_Name = values[0];
+
+                    await @interface.SaveSeriesAsync(series);
+                }
+            }
+        }
     }
 }

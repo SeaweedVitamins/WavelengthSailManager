@@ -43,6 +43,8 @@
     <None Remove="Resources\Special.csv" />
     <None Remove="Resources\Images\Cog.png" />
     <None Remove="Resources\Images\Home.png" />
+    <None Remove="Resources\SeriesList.csv" />
+    <None Remove="Resources\CategoryList.csv" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -65,6 +67,8 @@
     <EmbeddedResource Include="Resources\Special.csv" />
     <EmbeddedResource Include="Resources\Images\Cog.png" />
     <EmbeddedResource Include="Resources\Images\Home.png" />
+    <EmbeddedResource Include="Resources\SeriesList.csv" />
+    <EmbeddedResource Include="Resources\CategoryList.csv" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\RaceDetailsView.xaml.cs">

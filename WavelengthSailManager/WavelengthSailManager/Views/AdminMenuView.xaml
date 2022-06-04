@@ -21,7 +21,7 @@
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
-       <Button Text="Race Manager" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="Race Manager" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateRaceManagement"/>
        <Button Text="Boat Park" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
        <Button Text="PY Settings" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
        <Button Text="Platform Configuration" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>

@@ -20,6 +20,8 @@ namespace WavelengthSailManager
         public static readonly AsyncLazy<DatabaseInterface> Instance = new AsyncLazy<DatabaseInterface>(async () =>
         {
             var instance = new DatabaseInterface();
+            await Database.CreateTableAsync<Series>();
+            await Database.CreateTableAsync<Category>();
             await Database.CreateTableAsync<Boat>();
             await Database.CreateTableAsync<Category>();
             await Database.CreateTableAsync<Configuration>();
@@ -30,11 +32,13 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
-            preloader.LoadPYHandicaps();
+            /*preloader.LoadPYHandicaps();
             preloader.LoadRaceExample();
             preloader.LoadSailorsExample();
             preloader.LoadBoatsExample();
             preloader.LoadSpecialValues();
+            preloader.LoadSeriesValues();
+            preloader.LoadCategoryValues();*/
             return instance;
         });
 
@@ -122,6 +126,30 @@ namespace WavelengthSailManager
             }
         }
 
+        public Task<int> SaveCategoryAsync(Category item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task<int> SaveSeriesAsync(Series item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
         public Task<List<Race>> GetTodaysRacesAsync()
         {
             return Database.Table<Race>()
@@ -162,6 +190,14 @@ namespace WavelengthSailManager
             return Database.QueryAsync<BoatSailor>("SELECT Boat.ID, Boat.Sail_Number, " +
                 "Boat.Class_Name, Sailor.Sailor_Name FROM [Boat] INNER JOIN [Sailor] " +
                 "ON Boat.Sailor_ID = Sailor.ID");
+        }
+
+        public Task<List<RaceManagementModel>> GetRaceManagementListAsync()
+        {
+            return Database.QueryAsync<RaceManagementModel>("SELECT Race.Race_Number, Race.DateTime," +
+                "Series.Series_Name, Category.Category_Name FROM [Race] " +
+                "INNER JOIN [Series] ON Race.Series_ID = Series.ID " +
+                "INNER JOIN [Category] ON Race.Category_ID = Category.ID");
         }
 
         public Task<List<Boat>> GetTimingListAsync(List<int> competingBoatList)
