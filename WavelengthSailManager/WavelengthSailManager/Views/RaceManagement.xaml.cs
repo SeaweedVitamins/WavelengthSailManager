@@ -13,6 +13,11 @@ namespace WavelengthSailManager
         public RaceManagement()
         {
             InitializeComponent();
+            setBinding();
+        }
+
+        public void setBinding()
+        {
             BindingContext = new RaceManagementViewModel();
         }
 
@@ -33,6 +38,17 @@ namespace WavelengthSailManager
             Category category = new Category();
             category.Category_Name = result;
             await @interface.SaveCategoryAsync(category);
+        }
+
+        async void Delete(object sender, EventArgs args)
+        {
+            var button = (Button)sender;
+            RaceManagementModel ButtonContext = (RaceManagementModel)button.BindingContext;
+            var raceID = ButtonContext.ID;
+            DatabaseInterface @interface = await DatabaseInterface.Instance;
+            Race race = await @interface.GetRaceAsync(raceID);
+            await @interface.DeleteRaceAsync(race);
+            setBinding();
         }
     }
 }

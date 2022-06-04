@@ -47,7 +47,9 @@
                                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding Series_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                                 <Label Grid.Row="0" Grid.Column="3" Text="{Binding Category_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                                 <Label Grid.Row="0" Grid.Column="4" Text="{Binding Special_Event}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="5" Text="X" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Frame Grid.Row="0" Grid.Column="5" HeightRequest="80" Padding="0,0,0,0" Margin="0,0,0,0">
+                                    <Button Text="X" Style="{StaticResource deleteButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="Delete"/>
+                                </Frame>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -68,4 +70,13 @@
             </Grid>
         </StackLayout>
     </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="deleteButtonStyle" TargetType="Button" BasedOn="{StaticResource buttonStyle}">
+                <Setter Property="Margin" Value="0,10,0,10" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="BackgroundColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 </ContentPage>

@@ -3,6 +3,7 @@ namespace WavelengthSailManager.Models
 {
     public class RaceManagementModel
     {
+        public int ID { get; set; }
         public int Race_Number { get; set; }
         public DateTime DateTime { get; set; }
         public string Series_Name { get; set; }

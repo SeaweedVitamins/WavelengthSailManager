@@ -194,7 +194,7 @@ namespace WavelengthSailManager
 
         public Task<List<RaceManagementModel>> GetRaceManagementListAsync()
         {
-            return Database.QueryAsync<RaceManagementModel>("SELECT Race.Race_Number, Race.DateTime," +
+            return Database.QueryAsync<RaceManagementModel>("SELECT Race.ID, Race.Race_Number, Race.DateTime," +
                 "Series.Series_Name, Category.Category_Name FROM [Race] " +
                 "INNER JOIN [Series] ON Race.Series_ID = Series.ID " +
                 "INNER JOIN [Category] ON Race.Category_ID = Category.ID");
@@ -205,6 +205,16 @@ namespace WavelengthSailManager
             return Database.Table<Boat>()
                     .Where(t => competingBoatList.Contains(t.ID))
                     .ToListAsync();
+        }
+
+        public Task<Race> GetRaceAsync(int id)
+        {
+            return Database.Table<Race>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+
+        public Task<int> DeleteRaceAsync(Race race)
+        {
+            return Database.DeleteAsync(race);
         }
     }
 }
