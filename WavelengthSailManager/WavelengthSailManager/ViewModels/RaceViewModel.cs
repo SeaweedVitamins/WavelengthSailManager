@@ -21,8 +21,6 @@ namespace WavelengthSailManager.ViewModels
 
         public ICommand FinishCommand { get; }
 
-        public ICommand SpecialSelectedCommand { get; }
-
         public RaceViewModel(List<int> competingBoatList, Race selectedRace)
         {
             this.ElapsedTime = 0;

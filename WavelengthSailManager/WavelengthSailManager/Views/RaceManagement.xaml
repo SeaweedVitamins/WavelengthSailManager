@@ -66,7 +66,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Text="New Series" Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewSeriesAsync"/>
                 <Button Text="New Category" Grid.Row="0" Grid.Column="1" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewCategoryAsync"/>
-                <Button Text="New Race" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand"/>
+                <Button Text="New Race" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateNewRace"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

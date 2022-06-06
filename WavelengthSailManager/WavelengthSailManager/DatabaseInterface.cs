@@ -162,6 +162,18 @@ namespace WavelengthSailManager
                             .ToListAsync();
         }
 
+        public Task<List<Series>> GetSeriesAsync()
+        {
+            return Database.Table<Series>()
+                            .ToListAsync();
+        }
+
+        public Task<List<Category>> GetCategoriesAsync()
+        {
+            return Database.Table<Category>()
+                            .ToListAsync();
+        }
+
         public Task<List<PY>> GetPYsAsync()
         {
             return Database.Table<PY>()
@@ -178,6 +190,11 @@ namespace WavelengthSailManager
         {
             return Database.Table<Boat>()
                             .ToListAsync();
+        }
+
+        public Task<List<int>> GetTopSeriesRaceNumberAsync(int id)
+        {
+            return Database.QueryAsync<int>("SELECT MAX(Race_Number) from [Race]");
         }
 
         public Task<List<int>> GetTopRaceDetailsKey()

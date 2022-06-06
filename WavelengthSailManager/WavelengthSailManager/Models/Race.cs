@@ -11,6 +11,7 @@ namespace WavelengthSailManager.Models
         public int Race_Number { get; set; }
         public int Series_ID { get; set; }
         public int Category_ID { get; set; }
+        public string Special_Event { get; set; }
         public DateTime DateTime { get; set; }
 
         public override string ToString()

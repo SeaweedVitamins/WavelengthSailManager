@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using WavelengthSailManager.ViewModels;
+using WavelengthSailManager.Views;
 using Xamarin.Forms;
 
 namespace WavelengthSailManager
@@ -49,6 +50,11 @@ namespace WavelengthSailManager
             Race race = await @interface.GetRaceAsync(raceID);
             await @interface.DeleteRaceAsync(race);
             setBinding();
+        }
+
+        private void NavigateNewRace(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NewRace();
         }
     }
 }
