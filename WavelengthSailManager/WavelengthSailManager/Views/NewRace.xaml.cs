@@ -32,6 +32,7 @@ namespace WavelengthSailManager.Views
                 
                 await @interface.SaveRaceAsync(race);
             });
+            App.Current.MainPage = new RaceManagement();
         }
     }
 }

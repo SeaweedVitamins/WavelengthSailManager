@@ -194,7 +194,7 @@ namespace WavelengthSailManager
 
         public Task<List<int>> GetTopSeriesRaceNumberAsync(int id)
         {
-            return Database.QueryAsync<int>("SELECT MAX(Race_Number) from [Race]");
+            return Database.QueryAsync<int>("SELECT MAX(Race_Number) FROM [Race]");
         }
 
         public Task<List<int>> GetTopRaceDetailsKey()
