@@ -25,5 +25,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new RaceManagement();
         }
+
+        private void NavigatePYSettings(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new PYSettings();
+        }
     }
 }
