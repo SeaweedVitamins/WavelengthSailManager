@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    x:Class="WavelengthSailManager.BoatPark">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="{Binding DateTime, StringFormat='{0:T}'}" Style="{StaticResource ClockLabelStyle}">
+                    <Label.BindingContext>
+                    <local:ClockViewModel />
+                    </Label.BindingContext>
+                </Label>
+            </Frame>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Label Style="{StaticResource headerLabelStyle}" Margin="-10,0,0,0" >Boat Park</Label>
+            <ScrollView x:Name="ScrollView">
+                    <FlexLayout x:Name="flexLayout" Wrap="Wrap" JustifyContent="SpaceAround" BindableLayout.ItemsSource="{Binding BoatList}">
+                        <FlexLayout.BindingContext>
+                            <local:BoatParkViewModel/>
+                        </FlexLayout.BindingContext>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="Grid" WidthRequest="400" Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding}" Style="{StaticResource gridHeaderLabelStyle}"/>
+                                    <Button Grid.Row="1" Grid.Column="0" Text="Edit" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.EditCommand, Source={x:Reference flexLayout}}" CommandParameter="{Binding}" BackgroundColor="Green"/>
+                                    <Button Grid.Row="1" Grid.Column="1" Text="Delete" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference flexLayout}}" CommandParameter="{Binding}" BackgroundColor="Blue"/>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+            </ScrollView>
+            <Button Text="Add Boat" Style="{StaticResource buttonStyle}" Margin="0,15,0,15"/>
+            <Button Text="Add Sailor" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NewSailorAsync"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -233,5 +233,15 @@ namespace WavelengthSailManager
         {
             return Database.DeleteAsync(race);
         }
+
+        public Task<Boat> GetBoatAsync(int id)
+        {
+            return Database.Table<Boat>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+
+        public Task<int> DeleteBoatAsync(Boat boat)
+        {
+            return Database.DeleteAsync(boat);
+        }
     }
 }

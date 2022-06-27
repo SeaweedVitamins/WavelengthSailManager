@@ -30,5 +30,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new PYSettings();
         }
+
+        private void NavigateBoatPark(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new BoatPark();
+        }
     }
 }

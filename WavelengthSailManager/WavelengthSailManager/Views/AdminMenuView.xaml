@@ -22,7 +22,7 @@
             </BoxView.Background>
         </BoxView>
        <Button Text="Race Manager" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateRaceManagement"/>
-       <Button Text="Boat Park" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
+       <Button Text="Boat Park" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateBoatPark"/>
        <Button Text="PY Settings" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigatePYSettings"/>
        <Button Text="Platform Configuration" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
        <Button Text="Metrics" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>

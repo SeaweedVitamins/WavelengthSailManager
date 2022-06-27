@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WavelengthSailManager.Views.EditBoat"
+    xmlns:local="clr-namespace:WavelengthSailManager.ViewModels">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.BindingContext>
+                <local:PersonnelViewModel />
+            </Grid.BindingContext>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Boat" Style="{StaticResource headerLabelStyle}"/>
+            <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Sailor</Label>
+            <Picker Grid.Row="1" Grid.Column="1" x:Name="SailorPicker" Title="Sailor Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+            <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Sail Number</Label>
+            <Entry Grid.Row="2" Grid.Column="1" x:Name="EntrySailNumber" Style="{StaticResource fieldTitleLabelStyle}" Keyboard="Numeric"/> 
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
