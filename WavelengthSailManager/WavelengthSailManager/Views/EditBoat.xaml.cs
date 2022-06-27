@@ -8,12 +8,22 @@ namespace WavelengthSailManager.Views
 {
     public partial class EditBoat : ContentPage
     {
-        public EditBoat(Boat BoatSelected)
+        
+        public EditBoat(BoatSailor BoatSelected)
         {
             InitializeComponent();
-            //not sure this is the right id
-            SailorPicker.SelectedItem = BoatSelected.Sailor_ID;
-            EntrySailNumber.Text = Convert.ToString(BoatSelected.Sail_Number);
+            Task.Run(async () =>
+            {
+                DatabaseInterface @interface = await DatabaseInterface.Instance;
+                Boat selected = await @interface.GetBoatAsync(BoatSelected.ID);
+                SailorPicker.SelectedIndex = selected.Sailor_ID;
+                EntrySailNumber.Text = Convert.ToString(BoatSelected.Sail_Number);
+            });
+        }
+
+        private void SaveNewBoat(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new BoatPark();
         }
     }
 }

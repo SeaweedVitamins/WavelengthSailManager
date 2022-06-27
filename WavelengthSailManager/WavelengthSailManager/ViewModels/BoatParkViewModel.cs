@@ -39,12 +39,7 @@ namespace WavelengthSailManager.ViewModels
 
             EditCommand = new Command((object context) => {
                 BoatSailor BoatSelected = (BoatSailor)context;
-                Task.Run(async () =>
-                {
-                    DatabaseInterface @interface = await DatabaseInterface.Instance;
-                    Boat selected = await @interface.GetBoatAsync(BoatSelected.ID);
-                });
-                App.Current.MainPage = new EditBoat();
+                App.Current.MainPage = new EditBoat(BoatSelected);
             });
         }
 
