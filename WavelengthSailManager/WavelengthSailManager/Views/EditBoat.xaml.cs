@@ -8,10 +8,14 @@ namespace WavelengthSailManager.Views
 {
     public partial class EditBoat : ContentPage
     {
+        BoatSailor BoatSelected;
         
         public EditBoat(BoatSailor BoatSelected)
         {
             InitializeComponent();
+
+            this.BoatSelected = BoatSelected;
+            // Setting Sailor id is unreliable
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
@@ -21,9 +25,17 @@ namespace WavelengthSailManager.Views
             });
         }
 
-        private void SaveNewBoat(object sender, EventArgs e)
+        private void SaveBoat(object sender, EventArgs e)
         {
-            App.Current.MainPage = new BoatPark();
+            // Setting Sailor id is unreliable
+            Task.Run(async () =>
+            {
+                DatabaseInterface @interface = await DatabaseInterface.Instance;
+                Boat selected = await @interface.GetBoatAsync(BoatSelected.ID);
+                selected.Sailor_ID = SailorPicker.SelectedIndex;
+                selected.Sail_Number = Convert.ToInt32(EntrySailNumber.Text);
+                await @interface.SaveBoatAsync(selected);
+            });
         }
     }
 }
