@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WavelengthSailManager.Models;
+using WavelengthSailManager.Views;
 using Xamarin.Forms;
 
 namespace WavelengthSailManager
@@ -10,6 +11,11 @@ namespace WavelengthSailManager
         public BoatPark()
         {
             InitializeComponent();
+        }
+
+        private void NavigateNewBoat(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new NewBoat();
         }
 
         private async void NewSailorAsync(object sender, EventArgs e)

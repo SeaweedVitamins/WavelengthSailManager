@@ -46,7 +46,7 @@
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
             </ScrollView>
-            <Button Text="Add Boat" Style="{StaticResource buttonStyle}" Margin="0,15,0,15"/>
+            <Button Text="Add Boat" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NavigateNewBoat"/>
             <Button Text="Add Sailor" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NewSailorAsync"/>
         </StackLayout>
     </ContentPage.Content>

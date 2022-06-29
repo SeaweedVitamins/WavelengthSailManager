@@ -168,6 +168,12 @@ namespace WavelengthSailManager
                             .ToListAsync();
         }
 
+        public Task<List<Race>> GetRaceAsync()
+        {
+            return Database.Table<Race>()
+                            .ToListAsync();
+        }
+
         public Task<List<Category>> GetCategoriesAsync()
         {
             return Database.Table<Category>()
