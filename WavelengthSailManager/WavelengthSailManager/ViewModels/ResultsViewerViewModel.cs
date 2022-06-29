@@ -47,6 +47,7 @@ namespace WavelengthSailManager.ViewModels
 
         private void OnSeriesChanged(Series SelectedSeries)
         {
+            displayRace(null);
             var races = RaceCollection.Where(a => a.Series_ID == SelectedSeries.ID).ToList();
             RaceList = new ObservableCollection<Race>(races);
         }
@@ -55,7 +56,22 @@ namespace WavelengthSailManager.ViewModels
         {
             if(SelectedRace == null)
             {
+                Task.Run(async () =>
+                {
+                    DatabaseInterface @interface = await DatabaseInterface.Instance;
+                    List<Results> list = await @interface.GetSeriesResultsAsync(SelectedSeries.ID);
 
+                    var resultsLinqList = list.ConvertAll(x => new ResultsViewModel
+                    {
+                        Position = x.Place,
+                        Sail_Number = Convert.ToString(x.Sail_Number),
+                        Name = x.Sailor_Name,
+                        Class = x.Class_Name,
+                        Points = calculatePoints(x.Place, list.Count)
+                    });
+
+                    ResultsDisplay = new ObservableCollection<ResultsViewModel>(resultsLinqList);
+                });
             }
             else
             {

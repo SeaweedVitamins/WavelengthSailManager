@@ -240,6 +240,11 @@ namespace WavelengthSailManager
             return Database.QueryAsync<Results>("SELECT * FROM [Results] WHERE [Results].Race_ID = " + id);
         }
 
+        public Task<List<Results>> GetSeriesResultsAsync(int id)
+        {
+            var lol = "SELECT * FROM Results INNER JOIN Race ON Results.Race_ID = Race.ID WHERE Race.Series_ID = " + id;
+            return Database.QueryAsync<Results>(lol);
+        }
 
         public Task<int> DeleteRaceAsync(Race race)
         {
