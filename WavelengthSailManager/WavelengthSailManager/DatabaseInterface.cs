@@ -235,6 +235,12 @@ namespace WavelengthSailManager
             return Database.Table<Race>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
 
+        public Task<List<Results>> GetResultsAsync(int id)
+        {
+            return Database.QueryAsync<Results>("SELECT * FROM [Results] WHERE [Results].Race_ID = " + id);
+        }
+
+
         public Task<int> DeleteRaceAsync(Race race)
         {
             return Database.DeleteAsync(race);

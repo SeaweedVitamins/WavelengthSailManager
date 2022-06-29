@@ -4,47 +4,63 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
     x:Class="WavelengthSailManager.ResultsViewer">
     <ContentPage.Content>
-        <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
-            <CollectionView ItemsSource="{Binding ResultList}">
-            <CollectionView.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Results" Style="{StaticResource headerLabelStyle}"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Position" Style="{StaticResource resultHeaderLabelStyle}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultHeaderLabelStyle}"/>
-                    <Label Grid.Row="1" Grid.Column="2" Text="Helm" Style="{StaticResource resultHeaderLabelStyle}"/>
-                    <Label Grid.Row="1" Grid.Column="3" Text="Points" Style="{StaticResource resultHeaderLabelStyle}"/>
-                </Grid>
-            </CollectionView.Header>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="2,0,2,0" BackgroundColor="Black" ColumnSpacing="2" Padding="2,0,2,2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        </ScrollView>
+        <StackLayout>
+            <StackLayout.BindingContext>
+                <local:ResultsViewerViewModel/>
+            </StackLayout.BindingContext>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Picker Grid.Row="0" Grid.Column="0" x:Name="SeriesPicker" Title="Series" Style="{StaticResource picker}" ItemsSource="{Binding SeriesList}" ItemDisplayBinding="{Binding Series_Name}" SelectedItem="{Binding SelectedSeries}"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="RacePicker" Title="Series" Style="{StaticResource picker}" ItemsSource="{Binding RaceList}" ItemDisplayBinding="{Binding Race_Number}" SelectedItem="{Binding SelectedSeries}"/>
+            </Grid>
+            <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
+                <CollectionView ItemsSource="{Binding ResultList}">
+                    <CollectionView.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Results" Style="{StaticResource headerLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="Position" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Helm" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="3" Text="Points" Style="{StaticResource resultHeaderLabelStyle}"/>
+                        </Grid>
+                    </CollectionView.Header>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2,0,2,0" BackgroundColor="Black" ColumnSpacing="2" Padding="2,0,2,2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
