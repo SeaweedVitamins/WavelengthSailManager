@@ -36,5 +36,10 @@ namespace WavelengthSailManager
         {
             App.Current.MainPage = new AdminMenuView();
         }
+
+        private void NavigateToResultsViewer(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new ResultsViewer();
+        }
     }
 }

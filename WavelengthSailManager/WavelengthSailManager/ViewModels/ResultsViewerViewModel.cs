@@ -27,7 +27,11 @@ namespace WavelengthSailManager.ViewModels
             set { OnSeriesChanged(value); selectedSeries = value; }
         }
 
-        public Race SelectedRace { get; set; }
+        public Race SelectedRace {
+            set {
+                    displayRace(value);
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -47,7 +51,7 @@ namespace WavelengthSailManager.ViewModels
             RaceList = new ObservableCollection<Race>(races);
         }
 
-        public void displayRace()
+        public void displayRace(Race SelectedRace)
         {
             if(SelectedRace == null)
             {
@@ -65,6 +69,7 @@ namespace WavelengthSailManager.ViewModels
                         Position = x.Place,
                         Sail_Number = Convert.ToString(x.Sail_Number),
                         Name = x.Sailor_Name,
+                        Class = x.Class_Name,
                         Points = calculatePoints(x.Place, list.Count)
                     });
 
@@ -81,7 +86,7 @@ namespace WavelengthSailManager.ViewModels
             }
             else
             {
-                return recorded + " (" + max + ") ";
+                return recorded + " (" + max++ + ") ";
             }
         }
 

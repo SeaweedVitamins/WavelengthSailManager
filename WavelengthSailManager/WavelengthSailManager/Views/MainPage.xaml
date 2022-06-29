@@ -22,7 +22,7 @@
             </BoxView.Background>
         </BoxView>
        <Button Text="Start Today's Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="EndAndExpand" Clicked="NavigateToTodaysRaces"/>
-       <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand"/>
+       <Button Text="View Races" Style="{StaticResource homeButtonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToResultsViewer"/>
        <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Cog.png}" HeightRequest="70" Margin="0,0,0,20">
            <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="NavigateToAdminMenu" NumberOfTapsRequired="1" />

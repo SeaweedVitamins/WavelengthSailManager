@@ -9,7 +9,7 @@ namespace WavelengthSailManager
 {
     public partial class ResultsViewer : ContentPage
     {
-        public ResultsViewer(ObservableCollection<Timing> timingList, Race selectedRace)
+        public ResultsViewer()
         {
             InitializeComponent();
         }
