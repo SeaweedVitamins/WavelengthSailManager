@@ -29,7 +29,7 @@ namespace WavelengthSailManager.ViewModels
 
         public Race SelectedRace {
             set {
-                    displayRace(value);
+                    displayRace(value, 0);
             }
         }
 
@@ -47,30 +47,50 @@ namespace WavelengthSailManager.ViewModels
 
         private void OnSeriesChanged(Series SelectedSeries)
         {
-            displayRace(null);
+            displayRace(null, SelectedSeries.ID);
             var races = RaceCollection.Where(a => a.Series_ID == SelectedSeries.ID).ToList();
             RaceList = new ObservableCollection<Race>(races);
         }
 
-        public void displayRace(Race SelectedRace)
+        public void displayRace(Race SelectedRace, int selectedSeries)
         {
             if(SelectedRace == null)
             {
                 Task.Run(async () =>
                 {
                     DatabaseInterface @interface = await DatabaseInterface.Instance;
-                    List<Results> list = await @interface.GetSeriesResultsAsync(SelectedSeries.ID);
+                    List<Results> list = await @interface.GetSeriesResultsAsync(selectedSeries);
 
                     var resultsLinqList = list.ConvertAll(x => new ResultsViewModel
                     {
+                        Boat_ID = x.Boat_ID,
                         Position = x.Place,
                         Sail_Number = Convert.ToString(x.Sail_Number),
                         Name = x.Sailor_Name,
                         Class = x.Class_Name,
-                        Points = calculatePoints(x.Place, list.Count)
+                        Points = calculatePoints(x.Place, list.Count, false)
                     });
 
-                    ResultsDisplay = new ObservableCollection<ResultsViewModel>(resultsLinqList);
+                    var groupedResults = from boat in resultsLinqList
+                                         group boat by boat.Boat_ID into r
+                                         select new ResultsViewModel
+                                         {
+                                             Boat_ID = r.First().Boat_ID,
+                                             Sail_Number = Convert.ToString(r.First().Sail_Number),
+                                             Name = r.First().Name,
+                                             Class = r.First().Class,
+                                             Points = Convert.ToString(r.Sum(p => Convert.ToInt16(calculatePoints(p.Points, 10, true))))
+                                         };
+
+                    List<ResultsViewModel> orderedResults = groupedResults.OrderBy(t => Convert.ToInt16(t.Points)).ToList();
+                    int count = 0;
+                    foreach (var x in orderedResults)
+                    {
+                        x.Position = Convert.ToString(count+1);
+                        count++;
+                    }
+
+                    ResultsDisplay = new ObservableCollection<ResultsViewModel>(orderedResults);
                 });
             }
             else
@@ -86,7 +106,7 @@ namespace WavelengthSailManager.ViewModels
                         Sail_Number = Convert.ToString(x.Sail_Number),
                         Name = x.Sailor_Name,
                         Class = x.Class_Name,
-                        Points = calculatePoints(x.Place, list.Count)
+                        Points = calculatePoints(x.Place, list.Count, false)
                     });
 
                     ResultsDisplay = new ObservableCollection<ResultsViewModel>(resultsLinqList);
@@ -94,11 +114,15 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
-        public string calculatePoints(string recorded, int max)
+        public string calculatePoints(string recorded, int max, bool returnNumber)
         {
             if(int.TryParse(recorded, out int value))
             {
                 return recorded;
+            }
+            else if(returnNumber == true)
+            {
+                return Convert.ToString(max);
             }
             else
             {
