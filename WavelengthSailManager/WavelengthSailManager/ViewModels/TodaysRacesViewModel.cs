@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using Xamarin.Forms;
@@ -18,7 +20,16 @@ namespace WavelengthSailManager.ViewModels
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                RaceList = new ObservableCollection<Race>(await @interface.GetTodaysRacesAsync());
+                List<Race> LinqList = await @interface.GetTodaysRacesAsync();
+                ObservableCollection<Race> raceCollection = new ObservableCollection<Race>();
+                foreach(Race r in LinqList)
+                {
+                    if( r.DateTime.ToString("dd:MM") == DateTime.Now.ToString("dd:MM"))
+                    {
+                        raceCollection.Add(r);
+                    }
+                }
+                RaceList = new ObservableCollection<Race>(raceCollection.OrderBy(i => i.DateTime));
             });
         }
 

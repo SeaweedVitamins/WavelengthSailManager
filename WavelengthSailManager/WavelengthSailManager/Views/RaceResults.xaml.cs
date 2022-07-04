@@ -14,5 +14,10 @@ namespace WavelengthSailManager
             InitializeComponent();
             BindingContext = new RaceResultsViewModel(timingList, selectedRace);
         }
+
+        private void NavigateToHome(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
+        }
     }
 }

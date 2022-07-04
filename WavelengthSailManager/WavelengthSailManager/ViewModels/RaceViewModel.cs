@@ -41,13 +41,14 @@ namespace WavelengthSailManager.ViewModels
                 foreach(var x in SpecialCollection) { SpecialList.Add(x.Name); }
 
                 List<Boat> tList = new List<Boat>(await @interface.GetTimingListAsync(competingBoatList));
-                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList, Lap_Time_List = new List<int>() });
+                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList, NumberOfLaps = "Lap - 0", Lap_Time_List = new List<int>() });
                 TimingList = new ObservableCollection<Timing>(timingLinqList);
             });
 
             LapCommand = new Command((object context) => {
                 var BoatRacing = (Timing)context;
                 BoatRacing.Lap_Time_List.Add(elapsedTime);
+                BoatRacing.NumberOfLaps = "Lap - "+ BoatRacing.Lap_Time_List.Count;
             });
 
             FinishCommand = new Command((object context) => {

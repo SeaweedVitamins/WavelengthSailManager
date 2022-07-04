@@ -5,7 +5,6 @@
     xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
     x:Class="WavelengthSailManager.TodaysRaces">
     <ContentPage.Content>
-        
             <StackLayout>
             <Frame Style="{StaticResource ClockStyle}">
             <Label Text="{Binding DateTime, StringFormat='{0:T}'}" Style="{StaticResource ClockLabelStyle}">

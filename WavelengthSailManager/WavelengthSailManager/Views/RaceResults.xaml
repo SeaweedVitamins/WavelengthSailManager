@@ -2,9 +2,11 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
     x:Class="WavelengthSailManager.RaceResults">
     <ContentPage.Content>
-        <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
+        <StackLayout>
+            <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
             <CollectionView ItemsSource="{Binding ResultList}">
             <CollectionView.Header>
                 <Grid>
@@ -56,5 +58,11 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         </ScrollView>
+        <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+       </Image>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

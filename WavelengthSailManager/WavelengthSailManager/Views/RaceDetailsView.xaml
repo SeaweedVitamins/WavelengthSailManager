@@ -82,8 +82,8 @@
                 <Label x:Name="HumidityInfo" Grid.Row="5" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.humidity}"/>
                 <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Pressure: </Label>
                 <Label x:Name="PressureInfo" Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.pressure}"/>
-                <RadioButton Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions shown above are correct." Margin="0,10,0,0"/>
-                <RadioButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions are different. Complete Below:" />
+                <RadioButton x:Name="conditionsSame" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions shown above are correct." Margin="0,10,0,0"/>
+                <RadioButton x:Name="conditionsDifferent" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions are different. Complete Below:" />
                 <Editor Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter conditions here if conditions are different" Style="{StaticResource fieldTextEditorStyle}"/>
             </Grid>
             <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Next" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToBoatSelection" Margin="-40,0,0,0"/>

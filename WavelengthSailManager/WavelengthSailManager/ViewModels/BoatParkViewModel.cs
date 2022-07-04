@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WavelengthSailManager.Models;
@@ -24,7 +25,8 @@ namespace WavelengthSailManager.ViewModels
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                BoatList = new ObservableCollection<BoatSailor>(await @interface.GetBoatListAsync());
+                var linqList = await @interface.GetBoatListAsync();
+                BoatList = new ObservableCollection<BoatSailor>(linqList.OrderBy(i => i.Sail_Number));
             });
 
             DeleteCommand = new Command((object context) => {

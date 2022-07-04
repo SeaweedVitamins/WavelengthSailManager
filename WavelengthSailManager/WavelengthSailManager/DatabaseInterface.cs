@@ -32,13 +32,13 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
             DataPreloader preloader = new DataPreloader();
-            /*preloader.LoadPYHandicaps();
-            preloader.LoadRaceExample();
-            preloader.LoadSailorsExample();
-            preloader.LoadBoatsExample();
-            preloader.LoadSpecialValues();
-            preloader.LoadSeriesValues();
-            preloader.LoadCategoryValues();*/
+            //preloader.LoadPYHandicaps();
+            //preloader.LoadRaceExample();
+            //preloader.LoadSailorsExample();
+            //preloader.LoadBoatsExample();
+            //preloader.LoadSpecialValues();
+            //preloader.LoadSeriesValues();
+            //preloader.LoadCategoryValues();
             return instance;
         });
 

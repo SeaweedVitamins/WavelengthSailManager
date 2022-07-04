@@ -18,6 +18,12 @@ namespace WavelengthSailManager
 
         private void NavigateToBoatSelection(object sender, EventArgs e)
         {
+            var valid = true;
+            if (pickerRaceOfficer.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Race Officer", "OK"); return; }
+            if (pickerSafetyHelm.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Safety Helm", "OK"); return; }
+            if (pickerSafetyCrew.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Safety Crew", "OK"); return; }
+            if (!(conditionsSame.IsChecked || conditionsDifferent.IsChecked)) { valid = false; DisplayAlert("Error", "Select a weather option", "OK"); return; }
+
             selectedRaceDetails.GeneralWeather = GeneralWeatherInfo.Text;
             selectedRaceDetails.Temperature = Convert.ToDouble(TemperatureInfo.Text);
             selectedRaceDetails.Windspeed = Convert.ToDouble(WindSpeedInfo.Text);

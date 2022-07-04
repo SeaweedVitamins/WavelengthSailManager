@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace WavelengthSailManager.ViewModels
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                PersonnelList = new ObservableCollection<Sailor>(await @interface.GetSailorsAsync());
+                List<Sailor> linqList = await @interface.GetSailorsAsync();
+                PersonnelList = new ObservableCollection<Sailor>(linqList.OrderBy(i => i.Sailor_Name));
             });
         }
 

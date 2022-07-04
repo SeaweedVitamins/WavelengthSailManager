@@ -8,6 +8,8 @@
             <StackLayout.BindingContext>
                 <local:ResultsViewerViewModel/>
             </StackLayout.BindingContext>
+            <Label Style="{StaticResource headerLabelStyle}">Race Results Viewer</Label>
+            <Label Style="{StaticResource subHeaderLabelStyle}">Select the series and to filter further select the race number</Label>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -25,19 +27,19 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Results" Style="{StaticResource headerLabelStyle}"/>
                             <Label Grid.Row="1" Grid.Column="0" Text="Position" Style="{StaticResource resultHeaderLabelStyle}"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="Sail Number" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="2" Text="Helm" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="3" Text="Points" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="2" Text="Class" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="3" Text="Helm" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="1" Grid.Column="4" Text="Points" Style="{StaticResource resultHeaderLabelStyle}"/>
                         </Grid>
                     </CollectionView.Header>
                     <CollectionView.ItemTemplate>
@@ -55,9 +57,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Row="0" Grid.Column="0" Text="{Binding Position}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                                 <Label Grid.Row="0" Grid.Column="2" Text="{Binding Class}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Points}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Points}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

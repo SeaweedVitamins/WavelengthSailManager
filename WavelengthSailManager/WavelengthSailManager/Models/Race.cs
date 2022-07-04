@@ -16,7 +16,7 @@ namespace WavelengthSailManager.Models
 
         public override string ToString()
         {
-            return "Race " + Race_Number + ": " + DateTime.Hour +"."+DateTime.Minute;
+            return "Race " + Race_Number + " - " + DateTime.ToString("HH:mm");
         }
     }
 }

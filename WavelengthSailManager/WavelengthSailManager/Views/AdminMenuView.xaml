@@ -27,7 +27,7 @@
        <Button Text="Platform Configuration" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
        <Button Text="Metrics" Style="{StaticResource homeButtonStyle}" VerticalOptions="CenterAndExpand"/>
        <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
-        <Image.GestureRecognizers>
+            <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
        </Image>

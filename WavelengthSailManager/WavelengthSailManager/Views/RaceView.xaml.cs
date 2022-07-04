@@ -18,6 +18,11 @@ namespace WavelengthSailManager
             BindingContext = new RaceViewModel(competingBoatList, selectedRace);
         }
 
+        private void NavigateToHome(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
+        }
+
         private void BoatFinished(object sender, EventArgs e)
         {
             var fb = (Button)sender;

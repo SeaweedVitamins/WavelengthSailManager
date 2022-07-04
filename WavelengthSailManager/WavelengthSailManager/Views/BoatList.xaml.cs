@@ -35,6 +35,11 @@ namespace WavelengthSailManager
 
         private void NextPage(object sender, EventArgs e)
         {
+            if (CompetingBoatList.Count < 3)
+            {
+                DisplayAlert("Error", "You must select at least 3 boats", "OK");
+                return;
+            }
             App.Current.MainPage = new RaceStart(CompetingBoatList, selectedRace);
         }
     }

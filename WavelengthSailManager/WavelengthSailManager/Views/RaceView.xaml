@@ -22,7 +22,7 @@
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding}" Style="{StaticResource gridHeaderLabelStyle}"/>
-                                    <Button Grid.Row="1" Grid.Column="0" Text="Lap" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.LapCommand, Source={x:Reference ScrollLayout}}" CommandParameter="{Binding}" BackgroundColor="Green" Clicked="BoatLapped"/>
+                                    <Button Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfLaps}" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.LapCommand, Source={x:Reference ScrollLayout}}" CommandParameter="{Binding}" BackgroundColor="Green" Clicked="BoatLapped"/>
                                     <Button Grid.Row="1" Grid.Column="1" Text="Finish" Style="{StaticResource buttonStyle}" Command="{Binding BindingContext.FinishCommand, Source={x:Reference ScrollLayout}}" CommandParameter="{Binding}" BackgroundColor="Blue" Clicked="BoatFinished"/>
                                     <Picker Grid.Row="1" Grid.Column="2" x:Name="PickerSpecial" Title="Special" Style="{StaticResource picker}" ItemsSource="{Binding Special_List}" SelectedItem="{Binding Special_Classification_Assigned, Mode=TwoWay}"/>
                                 </Grid>
@@ -30,6 +30,7 @@
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
             </ScrollView>
+            <Button Text="Abandon" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateToHome"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
