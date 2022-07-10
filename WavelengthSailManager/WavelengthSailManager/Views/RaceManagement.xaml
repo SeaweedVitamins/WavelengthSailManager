@@ -5,12 +5,22 @@
     x:Class="WavelengthSailManager.RaceManagement">
     <ContentPage.Content>
         <StackLayout>
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="Race Management" Style="{StaticResource ClockLabelStyle}"/>
+            </Frame>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
             <ScrollView Padding="30,0,30,0" Margin="0,0,0,30">
                 <CollectionView ItemsSource="{Binding RaceManagementList}">
                     <CollectionView.Header>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -19,14 +29,14 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.ColumnSpan="7" Text="Race Management" Style="{StaticResource headerLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="0" Text="Race Number" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="1" Text="Series" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="2" Text="Date" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="3" Text="Category" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="4" Text="Special Event" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="1" Grid.Column="5" Text="Delete" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Race Number" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Series" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Date" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="3" Text="Category" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="4" Text="Special Event" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="5" Text="Delete" Style="{StaticResource resultHeaderLabelStyle}"/>
                         </Grid>
                     </CollectionView.Header>
                     <CollectionView.ItemTemplate>
@@ -36,6 +46,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />

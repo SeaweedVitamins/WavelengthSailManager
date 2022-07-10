@@ -8,7 +8,17 @@
             <StackLayout.BindingContext>
                 <local:ResultsViewerViewModel/>
             </StackLayout.BindingContext>
-            <Label Style="{StaticResource headerLabelStyle}">Race Results Viewer</Label>
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="Race Results Viewer" Style="{StaticResource ClockLabelStyle}"/>
+            </Frame>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
             <Label Style="{StaticResource subHeaderLabelStyle}">Select the series and to filter further select the race number</Label>
             <Grid>
                 <Grid.RowDefinitions>

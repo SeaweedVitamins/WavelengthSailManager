@@ -6,7 +6,19 @@
     xmlns:local="clr-namespace:WavelengthSailManager.ViewModels">
 
     <ContentPage.Content>
-        <Grid>
+        <StackLayout>
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="New Race" Style="{StaticResource ClockLabelStyle}"/>
+            </Frame>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Grid Margin="0,0,30,0">
             <Grid.BindingContext>
                 <local:SeriesCategoryViewModel />
             </Grid.BindingContext>
@@ -22,7 +34,6 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.ColumnSpan="2" Text="New Race" Style="{StaticResource headerLabelStyle}"/>
             <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Series</Label>
             <Picker Grid.Row="1" Grid.Column="1" x:Name="SeriesPicker" Title="Series Name" Style="{StaticResource picker}" ItemsSource="{Binding SeriesList}" ItemDisplayBinding="{Binding Series_Name}"/>
             <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Category</Label>
@@ -43,5 +54,6 @@
             <Entry x:Name="SpecialEventEntry" Grid.Row="4" Grid.Column="1" Placeholder="Special Event Name" />
             <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Save" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Margin="0,40,0,0" Clicked="SaveRace"/>
         </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

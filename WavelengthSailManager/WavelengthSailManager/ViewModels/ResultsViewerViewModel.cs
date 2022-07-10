@@ -71,6 +71,11 @@ namespace WavelengthSailManager.ViewModels
                         Points = calculatePoints(x.Place, list.Count, false)
                     });
 
+                    var groupCount = from boat in resultsLinqList
+                                     group boat by boat.Boat_ID;
+
+                    int total = groupCount.Count();
+
                     var groupedResults = from boat in resultsLinqList
                                          group boat by boat.Boat_ID into r
                                          select new ResultsViewModel
@@ -79,8 +84,8 @@ namespace WavelengthSailManager.ViewModels
                                              Sail_Number = Convert.ToString(r.First().Sail_Number),
                                              Name = r.First().Name,
                                              Class = r.First().Class,
-                                             Points = Convert.ToString(r.Sum(p => Convert.ToInt16(calculatePoints(p.Points, 10, true))))
-                                         };
+                                             Points = Convert.ToString(r.Sum(p => Convert.ToInt16(calculatePoints(p.Points, total, true))))
+                                         };                  
 
                     List<ResultsViewModel> orderedResults = groupedResults.OrderBy(t => Convert.ToInt16(t.Points)).ToList();
                     int count = 0;

@@ -4,7 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
     x:Class="WavelengthSailManager.PYSettings">
     <ContentPage.Content>
-        <Grid>
+        <StackLayout>
+            <Frame Style="{StaticResource ClockStyle}">
+                <Label Text="PY Settings" Style="{StaticResource ClockLabelStyle}"/>
+            </Frame>
+            <BoxView HeightRequest="10">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="DeepSkyBlue" Offset="0.1"/>
+                        <GradientStop Color="SteelBlue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -24,7 +36,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.ColumnSpan="7" Text="PY List" Style="{StaticResource headerLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" Text="PY List" Style="{StaticResource headerLabelStyle}"/>
                             <Label Grid.Row="1" Grid.Column="0" Text="Class" Style="{StaticResource resultHeaderLabelStyle}"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="PY Value" Style="{StaticResource resultHeaderLabelStyle}"/>
                         </Grid>
@@ -50,14 +62,13 @@
                 <Label Style="{StaticResource headerLabelStyle}">Modify Class</Label>
                 <Picker x:Name="ClassPicker" Title="Class" Style="{StaticResource picker}" ItemsSource="{Binding PYList}" ItemDisplayBinding="{Binding Class_Name}" SelectedIndexChanged="GetCorrespondingPyValue"/>
                 <Entry x:Name="PYEntry" Keyboard="Numeric" />
-                <Button Text="Save" Clicked="SaveModifiedPYValue" Style="{StaticResource buttonStyle}"/>
+                <Button Text="Save" Clicked="SaveModifiedPYValue" Style="{StaticResource buttonStyle}" VerticalOptions="Center"/>
                 <Label Style="{StaticResource headerLabelStyle}">Add Class</Label>
                 <Entry x:Name="EntryClassName" Placeholder="Class Name" />
                 <Entry x:Name="EntryPYValue" Keyboard="Numeric" />
-                <Button Text="Add" Clicked="SaveNewPYValue" Style="{StaticResource buttonStyle}"/>
+                <Button Text="Add" Clicked="SaveNewPYValue" Style="{StaticResource buttonStyle}" VerticalOptions="Center"/>
             </StackLayout>
         </Grid>
-
-
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
