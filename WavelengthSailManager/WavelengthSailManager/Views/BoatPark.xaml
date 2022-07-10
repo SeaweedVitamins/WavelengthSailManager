@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
     x:Class="WavelengthSailManager.BoatPark">
     <ContentPage.Content>
         <StackLayout>
@@ -45,12 +46,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="0" Grid.Column="0" Text="Add Boat" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NavigateNewBoat"/>
                 <Button Grid.Row="0" Grid.Column="1" Text="Add Sailor" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NewSailorAsync"/>
+                <Image Grid.Row="0" Grid.Column="2" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

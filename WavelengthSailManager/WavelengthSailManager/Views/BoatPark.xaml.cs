@@ -26,5 +26,10 @@ namespace WavelengthSailManager
             sailor.Sailor_Name = result;
             await @interface.SaveSailorAsync(sailor);
         }
+
+        private void NavigateToHome(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
+        }
     }
 }

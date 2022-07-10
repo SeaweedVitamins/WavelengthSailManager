@@ -52,5 +52,10 @@ namespace WavelengthSailManager
                 await @interface.SavePYAsync(py);
             });
         }
+
+        private void NavigateToHome(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MainPage();
+        }
     }
 }
