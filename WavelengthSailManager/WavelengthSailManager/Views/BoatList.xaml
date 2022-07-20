@@ -23,7 +23,6 @@
             </BoxView>
             <Label Style="{StaticResource headerLabelStyle}" Margin="-10,0,0,0" >Boat Park</Label>
             <ScrollView>
-                <ScrollView>
                     <FlexLayout x:Name="flexLayout" Wrap="Wrap" JustifyContent="SpaceAround" BindableLayout.ItemsSource="{Binding BoatList}">
                         <FlexLayout.BindingContext>
                             <local:BoatParkViewModel/>
@@ -34,7 +33,6 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
-                </ScrollView>
             </ScrollView>
             <Button Text="Next" Style="{StaticResource buttonStyle}" Margin="0,15,0,15" Clicked="NextPage"/>
         </StackLayout>
