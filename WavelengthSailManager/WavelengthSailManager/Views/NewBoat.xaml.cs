@@ -31,6 +31,7 @@ namespace WavelengthSailManager.Views
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 await @interface.SaveBoatAsync(newBoat);
             });
+            App.Current.MainPage = new BoatPark();
         }
     }
 }
