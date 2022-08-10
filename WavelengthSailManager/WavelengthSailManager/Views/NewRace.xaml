@@ -35,9 +35,11 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Series</Label>
-            <Picker Grid.Row="1" Grid.Column="1" x:Name="SeriesPicker" Title="Series Name" Style="{StaticResource picker}" ItemsSource="{Binding SeriesList}" ItemDisplayBinding="{Binding Series_Name}"/>
+            <Picker Grid.Row="1" Grid.Column="1" x:Name="SeriesPicker" Title="Series Name" Style="{StaticResource picker}"
+                    ItemsSource="{Binding SeriesList}" ItemDisplayBinding="{Binding Series_Name}"/>
             <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Category</Label>
-            <Picker Grid.Row="2" Grid.Column="1" x:Name="CategoryPicker" Title="Category Name" Style="{StaticResource picker}" ItemsSource="{Binding CategoryList}" ItemDisplayBinding="{Binding Category_Name}"/>
+            <Picker Grid.Row="2" Grid.Column="1" x:Name="CategoryPicker" Title="Category Name" Style="{StaticResource picker}"
+                    ItemsSource="{Binding CategoryList}" ItemDisplayBinding="{Binding Category_Name}"/>
             <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Date</Label>
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
@@ -52,7 +54,8 @@
             </Grid>
             <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Special Event</Label>
             <Entry x:Name="SpecialEventEntry" Grid.Row="4" Grid.Column="1" Placeholder="Special Event Name" />
-            <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Save" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Margin="0,40,0,0" Clicked="SaveRace"/>
+            <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Save" Style="{StaticResource buttonStyle}"
+                    VerticalOptions="CenterAndExpand" Margin="0,40,0,0" Clicked="SaveRace"/>
         </Grid>
         </StackLayout>
     </ContentPage.Content>

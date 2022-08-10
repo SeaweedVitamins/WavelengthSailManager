@@ -5,7 +5,8 @@
 
     <StackLayout>
         <Label Text="The current time is:" HorizontalTextAlignment="Center" FontSize="46" VerticalOptions="EndAndExpand"/>
-         <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="100" VerticalOptions="StartAndExpand">
+         <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalTextAlignment="Center"
+                TextColor="Black" FontSize="100" VerticalOptions="StartAndExpand">
              <Label.BindingContext>
                  <local:ClockViewModel />
              </Label.BindingContext>

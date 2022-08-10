@@ -17,11 +17,8 @@ namespace WavelengthSailManager.Extensions
                 return null;
             }
 
+            // Get image from assembely
             var executingAssembly = Assembly.GetExecutingAssembly();
-            foreach (var res in executingAssembly.GetManifestResourceNames())
-            {
-                System.Diagnostics.Debug.WriteLine("found resource: " + res);
-            }
 
             var imageSource = ImageSource.FromResource(Source, typeof(ImageResourceExtension).GetTypeInfo().Assembly);
 

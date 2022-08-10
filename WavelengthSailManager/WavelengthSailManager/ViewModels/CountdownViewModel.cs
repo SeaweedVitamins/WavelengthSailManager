@@ -19,16 +19,25 @@ namespace WavelengthSailManager.ViewModels
 
         public CountdownViewModel(List<int> competingBoatList, Race selectedRace)
         {
+            // Set to 5 minutes
             this.TimeToGo = 300;
 
+            // Create device timer
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
+                // Decrement the timer
                 this.TimeToGo--;
+
+                // Triggers for each interval where a change should occur
                 if (this.TimeToGo == 299) { WarningFlag = true; soundSignal(); }
                 if (this.TimeToGo == 240) { PreparatoryFlag = true; soundSignal(); }
                 if (this.TimeToGo == 60) { WarningFlag = false; soundSignal(); }
                 if (this.TimeToGo == 0) {
+
+                    // Send sound signal
                     PreparatoryFlag = false; soundSignal();
+
+                    // Switch to race view on end of timer
                     App.Current.MainPage = new RaceView(competingBoatList, selectedRace);
                     return false;
                 }
@@ -37,6 +46,7 @@ namespace WavelengthSailManager.ViewModels
             });
         }
 
+        // Getter and setter for time to go
         public int TimeToGo
         {
             set
@@ -57,6 +67,7 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
+        // Getter for time to start, formatting included
         public string TimeToStart
         {
             get
@@ -106,11 +117,16 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
+        // Sound signal function for each interval
         public void soundSignal()
         {
+            // Set the audio player and source
             var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
             var assembly = typeof(App).GetTypeInfo().Assembly;
-            Stream audioSource = assembly.GetManifestResourceStream("WavelengthSailManager.Resources.Audio.SoundSignal.mp3");
+            Stream audioSource = assembly.GetManifestResourceStream(
+                "WavelengthSailManager.Resources.Audio.SoundSignal.mp3");
+
+            // Play the sound
             player.Load(audioSource);
             player.Play();
         }

@@ -23,10 +23,13 @@ namespace WavelengthSailManager.ViewModels
 
         public RaceViewModel(List<int> competingBoatList, Race selectedRace)
         {
+            // Set time to 0
             this.ElapsedTime = 0;
 
+            // Timer that triggers evey second
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
+                // Increment elapsed time
                 this.ElapsedTime++;
                 
                 return true;
@@ -35,25 +38,48 @@ namespace WavelengthSailManager.ViewModels
             Task.Run(async () =>
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                var SpecialCollection = new ObservableCollection<SpecialValues>(await @interface.GetSpecialAsync());
+                var SpecialCollection = new ObservableCollection<SpecialValues>(
+                    await @interface.GetSpecialAsync());
 
+                // Create list for special classification
                 List<string> SpecialList = new List<string>();
+
+                // Add to picker
                 foreach(var x in SpecialCollection) { SpecialList.Add(x.Name); }
 
-                List<Boat> tList = new List<Boat>(await @interface.GetTimingListAsync(competingBoatList));
-                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID, Class_Name = x.Class_Name, Sail_Number = x.Sail_Number, Special_List = SpecialList, NumberOfLaps = "Lap - 0", Lap_Time_List = new List<int>() });
+                // Get list of competing boats
+                List<Boat> tList = new List<Boat>(await @interface.GetTimingListAsync(
+                    competingBoatList));
+
+                // Convert to Timing object collection
+                var timingLinqList = tList.ConvertAll(x => new Timing { ID = x.ID,
+                    Class_Name = x.Class_Name, Sail_Number = x.Sail_Number,
+                    Special_List = SpecialList, NumberOfLaps = "Lap - 0",
+                    Lap_Time_List = new List<int>() });
+
+                //Set to display property
                 TimingList = new ObservableCollection<Timing>(timingLinqList);
             });
 
+            // Lap command triggered by button
             LapCommand = new Command((object context) => {
                 var BoatRacing = (Timing)context;
+
+                // Adds lap time to list
                 BoatRacing.Lap_Time_List.Add(elapsedTime);
+
+                // Updates text on button
                 BoatRacing.NumberOfLaps = "Lap - "+ BoatRacing.Lap_Time_List.Count;
             });
 
+            // Finish command triggered by button
             FinishCommand = new Command((object context) => {
                 var BoatRacing = (Timing)context;
+
+                // Set finished boat to elapsed time
                 BoatRacing.Finish_Time = elapsedTime;
+
+                // Check if race is completed
                 checkIfRaceOver(selectedRace);
             });
         }
@@ -61,8 +87,11 @@ namespace WavelengthSailManager.ViewModels
         public void checkIfRaceOver(Race selectedRace)
         {
             bool finished = true;
+
+            // For each boat racing
             foreach(var x in timingList)
             {
+                // If they havent finished and have no classification assigned
                 if (x.Finish_Time == 0 && x.Special_Classification_Assigned == null)
                 {
                     finished = false;
@@ -70,9 +99,14 @@ namespace WavelengthSailManager.ViewModels
             }
             if(finished == true)
             {
+                // Switch to new page
                 App.Current.MainPage = new RaceResults(timingList, selectedRace);
             }
         }
+
+        /* 
+         * Property get and sets 
+         */
 
         public ObservableCollection<Timing> TimingList
         {
@@ -114,6 +148,7 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
+        // Set time elapsed as a string
         public string TimeElapsed
         {
             get

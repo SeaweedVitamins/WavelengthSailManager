@@ -19,17 +19,22 @@ namespace WavelengthSailManager
 
         public void setBinding()
         {
+            // Set the view binding
             BindingContext = new PYViewModel();
         }
 
+        // Get the py calue for a class
         private void GetCorrespondingPyValue(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
             PY context = (PY)picker.ItemsSource[selectedIndex];
+
+            // Set to text entry
             PYEntry.Text = Convert.ToString(context.Value);
         }
 
+        // Save the new py value assigned
         private void SaveModifiedPYValue(object sender, EventArgs e)
         {
             PY context = (PY)ClassPicker.ItemsSource[ClassPicker.SelectedIndex];
@@ -41,6 +46,7 @@ namespace WavelengthSailManager
             });
         }
 
+        // Save a new py value with the class
         private void SaveNewPYValue(object sender, EventArgs e)
         {
             Task.Run(async () =>

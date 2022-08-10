@@ -20,12 +20,16 @@ namespace WavelengthSailManager.ViewModels
         {
             Task.Run(async () =>
             {
+                // The database interface pulls sailor and boat list
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 SailorList = new ObservableCollection<Sailor>(await @interface.GetSailorsAsync());
                 BoatList = new ObservableCollection<Boat>(await @interface.GetBoatsAsync());
             });
         }
 
+        /*
+         * Getters and Setters for properties
+         */
         public ObservableCollection<Sailor> SailorList
         {
             set

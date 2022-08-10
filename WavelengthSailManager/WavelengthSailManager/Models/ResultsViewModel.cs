@@ -1,6 +1,4 @@
-﻿using System;
-using SQLite;
-
+﻿
 namespace WavelengthSailManager.Models
 {
     public class ResultsViewModel

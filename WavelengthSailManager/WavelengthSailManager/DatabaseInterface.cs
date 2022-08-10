@@ -19,6 +19,7 @@ namespace WavelengthSailManager
 
         public static readonly AsyncLazy<DatabaseInterface> Instance = new AsyncLazy<DatabaseInterface>(async () =>
         {
+            // Create tables
             var instance = new DatabaseInterface();
             await Database.CreateTableAsync<Series>();
             await Database.CreateTableAsync<Category>();
@@ -31,16 +32,41 @@ namespace WavelengthSailManager
             await Database.CreateTableAsync<Results>();
             await Database.CreateTableAsync<Sailor>();
             await Database.CreateTableAsync<SpecialValues>();
+
             DataPreloader preloader = new DataPreloader();
-            //preloader.LoadPYHandicaps();
-            //preloader.LoadRaceExample();
-            //preloader.LoadSailorsExample();
-            //preloader.LoadBoatsExample();
-            //preloader.LoadSpecialValues();
-            //preloader.LoadSeriesValues();
-            //preloader.LoadCategoryValues();
+
+            // Preload example data
+            preloader.LoadPYHandicaps();
+            preloader.LoadRaces();
+            preloader.LoadSailorsExample();
+            preloader.LoadBoatsExample();
+            preloader.LoadSpecialValues();
+            preloader.LoadSeriesValues();
+            preloader.LoadCategoryValues();
+            preloader.LoadConfiguration();
             return instance;
         });
+
+        /*
+         * SQLiteNet database queries
+         */
+        public Task<int> SaveConfiguration(Configuration item)
+        {
+            if (item.ID != 0)
+            {
+                return Database.UpdateAsync(item);
+            }
+            else
+            {
+                return Database.InsertAsync(item);
+            }
+        }
+
+        public Task<List<Configuration>> GetConfigurationAsync()
+        {
+            return Database.Table<Configuration>()
+                            .ToListAsync();
+        }
 
         public Task<int> SavePYAsync(PY item)
         {

@@ -22,7 +22,8 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Edit Boat" Style="{StaticResource headerLabelStyle}"/>
             <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Sailor</Label>
-            <Picker Grid.Row="1" Grid.Column="1" x:Name="SailorPicker" Title="Sailor Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+            <Picker Grid.Row="1" Grid.Column="1" x:Name="SailorPicker" Title="Sailor Name" Style="{StaticResource picker}"
+                    ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
             <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Sail Number</Label>
             <Entry Grid.Row="2" Grid.Column="1" x:Name="EntrySailNumber" Style="{StaticResource fieldTitleLabelStyle}" Keyboard="Numeric"/>
             <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Save" Clicked="SaveBoat" Style="{StaticResource buttonStyle}"/>

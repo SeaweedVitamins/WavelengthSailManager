@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using WavelengthSailManager.Models;
-using Xamarin.Forms;
 
 namespace WavelengthSailManager.ViewModels
 {
@@ -22,9 +19,12 @@ namespace WavelengthSailManager.ViewModels
         {
             Task.Run(async () =>
             {
+                // Database interface and retrieve needed data
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 ObservableCollection<PY> pyList = new ObservableCollection<PY>(await @interface.GetPYsAsync());
                 ObservableCollection<BoatSailor> sailorList = new ObservableCollection<BoatSailor>(await @interface.GetBoatListAsync());
+
+                // Calculate the results for race completed
                 ResultList = calculateResults(timingList, pyList, sailorList, selectedRace);
                 foreach(var Result in ResultList)
                 {
@@ -33,6 +33,7 @@ namespace WavelengthSailManager.ViewModels
             });
         }
 
+        // Getter and setter for the result list
         public ObservableCollection<Results> ResultList
         {
             set
@@ -53,16 +54,24 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
-        public ObservableCollection<Results> calculateResults(ObservableCollection<Timing> timingList, ObservableCollection<PY> pyList, ObservableCollection<BoatSailor> sailorList, Race selectedRace)
+        // Function to calculate the results for one race
+        public ObservableCollection<Results> calculateResults(ObservableCollection<Timing> timingList,
+            ObservableCollection<PY> pyList, ObservableCollection<BoatSailor> sailorList, Race selectedRace)
         {
+            // Setting the number of laps default 1
             int maxNumberOfLaps = 1;
+
+            // Each boat that is in the racing list
             foreach(var x in timingList)
             {
                 if(x.Lap_Time_List.Count > maxNumberOfLaps)
                 {
+                    // Set number of laps completed
                     maxNumberOfLaps = x.Lap_Time_List.Count;
                 }
             }
+
+            // Each boat in the racing list
             foreach(var x in timingList)
             {
                 int pyValue = 0;
@@ -70,38 +79,49 @@ namespace WavelengthSailManager.ViewModels
                 {
                     if(pyList[i].Class_Name == x.Class_Name)
                     {
+                        // Set the PY value
                         pyValue = pyList[i].Value;
                         break;
                     }
                 }
 
                 var numberOfLaps = 1;
-                if(x.Lap_Time_List.Count > numberOfLaps) { numberOfLaps = x.Lap_Time_List.Count; }
+
+                // Calculate the corrected time
+                if(x.Lap_Time_List.Count > numberOfLaps) { numberOfLaps = x.Lap_Time_List.Count + 1; }
                 x.Corrected_Time = (x.Finish_Time * maxNumberOfLaps * 1000) / (pyValue * numberOfLaps);
 
             }
 
+            // Order by corrected time
             var list = timingList.ToList<Timing>();
             list = timingList.OrderBy(t => t.Corrected_Time).ToList();
+
             for(int i=0; i < list.Count; i++)
             {
+                // If classification is set
                 if (list[i].Special_Classification_Assigned != null)
                 {
+                    // Move item to end of result list
                     var item = list[i];
                     list.RemoveAt(i);
                     list.Add(item);
                 }
             }
 
-            
-            var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned), Race_ID = selectedRace.ID, Sail_Number = x.Sail_Number,
-                Sailor_Name = getSailorName(sailorList, x.ID), Class_Name = x.Class_Name, Number_Of_Laps = getNumberOfLaps(x.Lap_Time_List.Count),
-                Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time), Boat_ID = x.ID});
+            // Convert to Results list
+            var resultsLinqList = list.ConvertAll(x => new Results { Place = getPlace(x.Special_Classification_Assigned),
+                Race_ID = selectedRace.ID, Sail_Number = x.Sail_Number, Sailor_Name = getSailorName(sailorList, x.ID),
+                Class_Name = x.Class_Name, Number_Of_Laps = getNumberOfLaps(x.Lap_Time_List.Count),
+                Finish_Time = ConvertTimeToString(x.Finish_Time), Corrected_Time = ConvertTimeToString(x.Corrected_Time),
+                Boat_ID = x.ID});
 
+            // Set observable collection to be displayed
             ObservableCollection<Results> results = new ObservableCollection<Results>(resultsLinqList);
             return results;
         }
 
+        // Function to set number of laps completed by boat
         public int getNumberOfLaps(int lapCount)
         {
             if(lapCount == 0)
@@ -110,10 +130,11 @@ namespace WavelengthSailManager.ViewModels
             }
             else
             {
-                return lapCount;
+                return lapCount +1;
             }
         }
 
+        // Get the place in the results
         public string getPlace(string special)
         {
             if(special != null)
@@ -127,6 +148,7 @@ namespace WavelengthSailManager.ViewModels
             }
         }
 
+        // Get the sailor name from list
         public string getSailorName(ObservableCollection<BoatSailor> sailorList, int boatId)
         {
             for (int i = 0; i < sailorList.Count; i++)
@@ -140,6 +162,7 @@ namespace WavelengthSailManager.ViewModels
             return "";
         }
 
+        // Set the time as a string for displaying
         public string ConvertTimeToString(int correctedTime)
         {
             TimeSpan time = TimeSpan.FromSeconds(correctedTime);

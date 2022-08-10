@@ -20,12 +20,16 @@ namespace WavelengthSailManager.ViewModels
         {
             Task.Run(async () =>
             {
+                // Get Series and Category tables from the database
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 SeriesList = new ObservableCollection<Series>(await @interface.GetSeriesAsync());
                 CategoryList = new ObservableCollection<Category>(await @interface.GetCategoriesAsync());
             });
         }
 
+        /*
+         * Getters and setters for properties
+         */
         public ObservableCollection<Series> SeriesList
         {
             set

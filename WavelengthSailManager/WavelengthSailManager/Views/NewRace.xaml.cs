@@ -19,17 +19,20 @@ namespace WavelengthSailManager.Views
             {
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
 
+                // Set the race based on picker values
                 Race race = new Race();
                 Category category = (Category)CategoryPicker.SelectedItem;
                 Series series = (Series)SeriesPicker.SelectedItem;
 
+                // Set race model
                 var raceNumber = await @interface.GetTopSeriesRaceNumberAsync(series.ID);
                 race.Race_Number = raceNumber[0]+1;
                 race.Category_ID = category.ID;
                 race.Series_ID = series.ID;
                 race.Special_Event = SpecialEventEntry.Text;
                 race.DateTime = RaceDatePicker.Date + RaceTimePicker.Time;
-                
+
+                // Save race
                 await @interface.SaveRaceAsync(race);
             });
             App.Current.MainPage = new RaceManagement();

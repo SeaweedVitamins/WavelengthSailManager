@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
     x:Class="WavelengthSailManager.PYSettings">
     <ContentPage.Content>
@@ -52,8 +52,10 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Value}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Class_Name}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Value}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -61,14 +63,19 @@
             </ScrollView>
             <StackLayout Grid.Column="1">
                 <Label Style="{StaticResource headerLabelStyle}">Modify Class</Label>
-                <Picker x:Name="ClassPicker" Title="Class" Style="{StaticResource picker}" ItemsSource="{Binding PYList}" ItemDisplayBinding="{Binding Class_Name}" SelectedIndexChanged="GetCorrespondingPyValue"/>
+                <Picker x:Name="ClassPicker" Title="Class" Style="{StaticResource picker}"
+                        ItemsSource="{Binding PYList}" ItemDisplayBinding="{Binding Class_Name}"
+                        SelectedIndexChanged="GetCorrespondingPyValue"/>
                 <Entry x:Name="PYEntry" Keyboard="Numeric" />
-                <Button Text="Save" Clicked="SaveModifiedPYValue" Style="{StaticResource buttonStyle}" VerticalOptions="Center"/>
+                <Button Text="Save" Clicked="SaveModifiedPYValue" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="Center"/>
                 <Label Style="{StaticResource headerLabelStyle}">Add Class</Label>
                 <Entry x:Name="EntryClassName" Placeholder="Class Name" />
                 <Entry x:Name="EntryPYValue" Keyboard="Numeric" />
-                <Button Text="Add" Clicked="SaveNewPYValue" Style="{StaticResource buttonStyle}" VerticalOptions="Center"/>
-                <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
+                <Button Text="Add" Clicked="SaveNewPYValue" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="Center"/>
+                <Image Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}"
+                       HeightRequest="70" Margin="0,0,0,20">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>

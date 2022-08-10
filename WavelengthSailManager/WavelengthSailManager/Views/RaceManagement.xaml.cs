@@ -24,7 +24,10 @@ namespace WavelengthSailManager
 
         private async void NewSeriesAsync(object sender, EventArgs e)
         {
+            // Display the prompt to request the series name
             string result = await DisplayPromptAsync("Series Name", "Enter name below:");
+
+            // Save new series to db
             DatabaseInterface @interface = await DatabaseInterface.Instance;
             Series series = new Series();
             series.Series_Name = result;
@@ -34,7 +37,10 @@ namespace WavelengthSailManager
 
         private async void NewCategoryAsync(object sender, EventArgs e)
         {
+            // Display the prompt to request the category name
             string result = await DisplayPromptAsync("Category Name", "Enter name below:");
+
+            // Save category to the db
             DatabaseInterface @interface = await DatabaseInterface.Instance;
             Category category = new Category();
             category.Category_Name = result;
@@ -43,10 +49,15 @@ namespace WavelengthSailManager
 
         async void Delete(object sender, EventArgs args)
         {
+            // Get context from buttion
             var button = (Button)sender;
             RaceManagementModel ButtonContext = (RaceManagementModel)button.BindingContext;
+
+            // Get race context
             var raceID = ButtonContext.ID;
             DatabaseInterface @interface = await DatabaseInterface.Instance;
+
+            // Get the race and remove from db
             Race race = await @interface.GetRaceAsync(raceID);
             await @interface.DeleteRaceAsync(race);
             setBinding();

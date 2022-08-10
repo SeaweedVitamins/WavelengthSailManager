@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:WavelengthSailManager.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ext="clr-namespace:WavelengthSailManager.Extensions"
     x:Class="WavelengthSailManager.RaceManagement">
     <ContentPage.Content>
@@ -33,8 +33,8 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Text="Race Number" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="Series" Style="{StaticResource resultHeaderLabelStyle}"/>
-                            <Label Grid.Row="0" Grid.Column="2" Text="Date" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Date" Style="{StaticResource resultHeaderLabelStyle}"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Series" Style="{StaticResource resultHeaderLabelStyle}"/>
                             <Label Grid.Row="0" Grid.Column="3" Text="Category" Style="{StaticResource resultHeaderLabelStyle}"/>
                             <Label Grid.Row="0" Grid.Column="4" Text="Special Event" Style="{StaticResource resultHeaderLabelStyle}"/>
                             <Label Grid.Row="0" Grid.Column="5" Text="Delete" Style="{StaticResource resultHeaderLabelStyle}"/>
@@ -54,11 +54,16 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Race_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateTime}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Series_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Category_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Special_Event}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Race_Number}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateTime}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Series_Name}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding Category_Name}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="{Binding Special_Event}"
+                                       Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
                                 <Frame Grid.Row="0" Grid.Column="5" HeightRequest="80" Padding="0,0,0,0" Margin="0,0,0,0">
                                     <Button Text="X" Style="{StaticResource deleteButtonStyle}" VerticalOptions="CenterAndExpand" Clicked="Delete"/>
                                 </Frame>
@@ -77,10 +82,14 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <Button Text="New Series" Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewSeriesAsync"/>
-                <Button Text="New Category" Grid.Row="0" Grid.Column="1" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NewCategoryAsync"/>
-                <Button Text="New Race" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateNewRace"/>
-                <Image Grid.Row="0" Grid.Column="3" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}" HeightRequest="70" Margin="0,0,0,20">
+                <Button Text="New Series" Grid.Row="0" Grid.Column="0" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="CenterAndExpand" Clicked="NewSeriesAsync"/>
+                <Button Text="New Category" Grid.Row="0" Grid.Column="1" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="CenterAndExpand" Clicked="NewCategoryAsync"/>
+                <Button Text="New Race" Grid.Row="0" Grid.Column="2" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="CenterAndExpand" Clicked="NavigateNewRace"/>
+                <Image Grid.Row="0" Grid.Column="3" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Home.png}"
+                       HeightRequest="70" Margin="0,0,0,20">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NavigateToHome" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>

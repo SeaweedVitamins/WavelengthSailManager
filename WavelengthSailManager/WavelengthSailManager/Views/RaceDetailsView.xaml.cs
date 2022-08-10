@@ -10,20 +10,28 @@ namespace WavelengthSailManager
     {
         RaceDetails selectedRaceDetails = new RaceDetails();
         Race selectedRace;
+
         public RaceDetailsView(Race selectedRace)
         {
             this.selectedRace = selectedRace;
             InitializeComponent();
         }
 
+        // Validate the correct information has been input
         private void NavigateToBoatSelection(object sender, EventArgs e)
         {
             var valid = true;
-            if (pickerRaceOfficer.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Race Officer", "OK"); return; }
-            if (pickerSafetyHelm.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Safety Helm", "OK"); return; }
-            if (pickerSafetyCrew.SelectedIndex == -1) { valid = false; DisplayAlert("Error", "Please set the Safety Crew", "OK"); return; }
-            if (!(conditionsSame.IsChecked || conditionsDifferent.IsChecked)) { valid = false; DisplayAlert("Error", "Select a weather option", "OK"); return; }
 
+            if (pickerRaceOfficer.SelectedIndex == -1) { valid = false;
+                DisplayAlert("Error", "Please set the Race Officer", "OK"); return; }
+            if (pickerSafetyHelm.SelectedIndex == -1) { valid = false;
+                DisplayAlert("Error", "Please set the Safety Helm", "OK"); return; }
+            if (pickerSafetyCrew.SelectedIndex == -1) { valid = false;
+                DisplayAlert("Error", "Please set the Safety Crew", "OK"); return; }
+            if (!(conditionsSame.IsChecked || conditionsDifferent.IsChecked))
+            { valid = false; DisplayAlert("Error", "Select a weather option", "OK"); return; }
+
+            // Add details to the model
             selectedRaceDetails.GeneralWeather = GeneralWeatherInfo.Text;
             selectedRaceDetails.Temperature = Convert.ToDouble(TemperatureInfo.Text);
             selectedRaceDetails.Windspeed = Convert.ToDouble(WindSpeedInfo.Text);
@@ -38,6 +46,7 @@ namespace WavelengthSailManager
 
             Task.Run(async () =>
             {
+                // Save the models
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 await @interface.SaveRaceDetailsAsync(selectedRaceDetails);
                 selectedRace.Race_Details_ID = selectedRaceDetails.ID;
@@ -47,6 +56,7 @@ namespace WavelengthSailManager
             App.Current.MainPage = new BoatList(selectedRace);
         }
 
+        // Collect the personel information
         private string CollectPersonel()
         {
             string personelCSV = "";
@@ -58,6 +68,7 @@ namespace WavelengthSailManager
             collectionList = getAndAppendPickerValue(collectionList, pickerAdditional4);
             collectionList = getAndAppendPickerValue(collectionList, pickerAdditional5);
 
+            // Add personel to list
             foreach(string x in collectionList)
             {
                 personelCSV += (x+",");
@@ -66,6 +77,7 @@ namespace WavelengthSailManager
             return personelCSV;
         }
 
+        // If picker is not set dont append
         private List<string> getAndAppendPickerValue(List<string> collectionList,Picker picker)
         {
             if(picker.SelectedIndex == -1)

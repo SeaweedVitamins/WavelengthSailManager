@@ -9,9 +9,12 @@ namespace WavelengthSailManager
     {
         List<int> competingBoatList = new List<int>();
         Race selectedRace;
+
         public RaceStart(List<int> competingBoatList, Race selectedRace)
         {
             InitializeComponent();
+
+            // Competing boat list is just passed through
             this.competingBoatList = competingBoatList;
             this.selectedRace = selectedRace;
         }

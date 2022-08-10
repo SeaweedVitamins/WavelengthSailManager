@@ -20,11 +20,14 @@ namespace WavelengthSailManager.ViewModels
         {
             Task.Run(async () =>
             {
+                // Getting each of the races to display on management screen
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
-                RaceManagementList = new ObservableCollection<RaceManagementModel>(await @interface.GetRaceManagementListAsync());
+                RaceManagementList = new ObservableCollection<RaceManagementModel>(
+                    await @interface.GetRaceManagementListAsync());
             });
         }
 
+        // Getter and Setter for the management list
         public ObservableCollection<RaceManagementModel> RaceManagementList
         {
             set

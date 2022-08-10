@@ -16,7 +16,10 @@ namespace WavelengthSailManager
 
         private void NavigateToRaceDetails(object sender, EventArgs e)
         {
+            // Get selected race from button context
             Race selectedRace = ((Button)sender).BindingContext as Race;
+
+            // Switch page to race details view
             App.Current.MainPage = new RaceDetailsView(selectedRace);
         }
     }

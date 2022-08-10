@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace WavelengthSailManager.Models
@@ -18,6 +17,7 @@ namespace WavelengthSailManager.Models
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Used to update the number on the button
         public string NumberOfLaps
         {
             set
@@ -40,6 +40,7 @@ namespace WavelengthSailManager.Models
 
         public override string ToString()
         {
+            // Formatted for each boat
             return Class_Name + " - " + Sail_Number;
         }
     }

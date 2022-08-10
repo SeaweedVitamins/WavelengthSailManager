@@ -12,6 +12,8 @@ namespace WavelengthSailManager
         public RaceResults(ObservableCollection<Timing> timingList, Race selectedRace)
         {
             InitializeComponent();
+
+            // Set main binding context
             BindingContext = new RaceResultsViewModel(timingList, selectedRace);
         }
 

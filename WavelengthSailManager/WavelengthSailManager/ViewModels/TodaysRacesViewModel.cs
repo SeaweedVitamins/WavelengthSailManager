@@ -19,9 +19,14 @@ namespace WavelengthSailManager.ViewModels
         {
             Task.Run(async () =>
             {
+                // Get data for the races
                 DatabaseInterface @interface = await DatabaseInterface.Instance;
                 List<Race> LinqList = await @interface.GetTodaysRacesAsync();
+
+                //Set to a collection
                 ObservableCollection<Race> raceCollection = new ObservableCollection<Race>();
+
+                // Checks if the race belongs to the current date
                 foreach(Race r in LinqList)
                 {
                     if( r.DateTime.ToString("dd:MM") == DateTime.Now.ToString("dd:MM"))
@@ -33,6 +38,7 @@ namespace WavelengthSailManager.ViewModels
             });
         }
 
+        // Get and set for the RaceList
         public ObservableCollection<Race> RaceList
         {
             set

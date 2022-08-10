@@ -16,10 +16,14 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Image Grid.Row="0" Grid.Column="1" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Preparatory.png}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding PreparatoryFlag}"/>
-                <Image Grid.Row="0" Grid.Column="0" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Warning.png}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding WarningFlag}"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="5" Style="{StaticResource countdownLabelStyle}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding WarningFlag}"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="4" Style="{StaticResource countdownLabelStyle}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding PreparatoryFlag}"/>
+                <Image Grid.Row="0" Grid.Column="1" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Preparatory.png}"
+                       HorizontalOptions="CenterAndExpand" IsVisible="{Binding PreparatoryFlag}"/>
+                <Image Grid.Row="0" Grid.Column="0" Source="{ext:ImageResource WavelengthSailManager.Resources.Images.Warning.png}"
+                       HorizontalOptions="CenterAndExpand" IsVisible="{Binding WarningFlag}"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="5" Style="{StaticResource countdownLabelStyle}"
+                       HorizontalOptions="CenterAndExpand" IsVisible="{Binding WarningFlag}"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="4" Style="{StaticResource countdownLabelStyle}"
+                       HorizontalOptions="CenterAndExpand" IsVisible="{Binding PreparatoryFlag}"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -29,10 +33,11 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="1" Text="Restart Sequence" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="RestartSequence"/>
-                <Button Grid.Row="0" Grid.Column="0" Text="Abandon" Style="{StaticResource buttonStyle}" VerticalOptions="CenterAndExpand" Clicked="NavigateToHome"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Restart Sequence" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="CenterAndExpand" Clicked="RestartSequence"/>
+                <Button Grid.Row="0" Grid.Column="0" Text="Abandon" Style="{StaticResource buttonStyle}"
+                        VerticalOptions="CenterAndExpand" Clicked="NavigateToHome"/>
             </Grid>
-            <Button Text="Next" Style="{StaticResource buttonBoatStyle}" Clicked="NextPage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

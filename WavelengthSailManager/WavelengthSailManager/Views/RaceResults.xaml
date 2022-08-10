@@ -55,13 +55,20 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Number_Of_Laps}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Finish_Time}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
-                        <Label Grid.Row="0" Grid.Column="6" Text="{Binding Corrected_Time}" Style="{StaticResource resultGridLabelStyle}" BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Place}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Sail_Number}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Sailor_Name}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding Class_Name}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="4" Text="{Binding Number_Of_Laps}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="5" Text="{Binding Finish_Time}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
+                        <Label Grid.Row="0" Grid.Column="6" Text="{Binding Corrected_Time}" Style="{StaticResource resultGridLabelStyle}"
+                               BackgroundColor="White"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using WavelengthSailManager.Models;
 using WavelengthSailManager.ViewModels;
 using Xamarin.Forms;
@@ -9,12 +8,12 @@ namespace WavelengthSailManager
 {
     public partial class RaceView : ContentPage
     {
-        //public List<int> competingBoatList = new List<int>();
 
         public RaceView(List<int> competingBoatList, Race selectedRace)
         {
-            //this.competingBoatList = competingBoatList;
             InitializeComponent();
+
+            // Set the grid binding context to race view model
             BindingContext = new RaceViewModel(competingBoatList, selectedRace);
         }
 
@@ -25,8 +24,11 @@ namespace WavelengthSailManager
 
         private void BoatFinished(object sender, EventArgs e)
         {
+            // Get button context
             var fb = (Button)sender;
             var mainGrid = (Grid)fb.Parent;
+
+            // Disable children of grid when finished
             foreach(var x in mainGrid.Children)
             {
                 if(x.GetType() != typeof(Label))
@@ -39,10 +41,12 @@ namespace WavelengthSailManager
 
         private void BoatLapped(object sender, EventArgs e)
         {
+            // Get button context
             var lb = (Button)sender;
             lb.BackgroundColor = Color.Orange;
             int duration = 2;
 
+            // Display yellow for 2 seconds
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 duration--;

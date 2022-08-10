@@ -35,18 +35,27 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Race Officer</Label>
-                <Picker Grid.Row="0" Grid.Column="1" x:Name="pickerRaceOfficer"  Title="Race Officer Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="pickerRaceOfficer"  Title="Race Officer Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
                 <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Safety Helm</Label>
-                <Picker Grid.Row="1" Grid.Column="1" x:Name="pickerSafetyHelm" Title="Safety Helm Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="1" Grid.Column="1" x:Name="pickerSafetyHelm" Title="Safety Helm Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
                 <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Safety Crew</Label>
-                <Picker Grid.Row="2" Grid.Column="1" x:Name="pickerSafetyCrew" Title="Safety Crew Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="2" Grid.Column="1" x:Name="pickerSafetyCrew" Title="Safety Crew Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
                 <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldTitleLabelStyle}" Margin="0,15,0,0">Other Rota Personel (If Applicable)</Label>
-                <Picker Grid.Row="4" Grid.Column="0" x:Name="pickerAdditional0" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
-                <Picker Grid.Row="4" Grid.Column="1" x:Name="pickerAdditional1" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
-                <Picker Grid.Row="5" Grid.Column="0" x:Name="pickerAdditional2" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
-                <Picker Grid.Row="5" Grid.Column="1" x:Name="pickerAdditional3" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
-                <Picker Grid.Row="6" Grid.Column="0" x:Name="pickerAdditional4" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
-                <Picker Grid.Row="6" Grid.Column="1" x:Name="pickerAdditional5" Title="Name" Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="4" Grid.Column="0" x:Name="pickerAdditional0" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="4" Grid.Column="1" x:Name="pickerAdditional1" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="5" Grid.Column="0" x:Name="pickerAdditional2" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="5" Grid.Column="1" x:Name="pickerAdditional3" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="6" Grid.Column="0" x:Name="pickerAdditional4" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
+                <Picker Grid.Row="6" Grid.Column="1" x:Name="pickerAdditional5" Title="Name"
+                        Style="{StaticResource picker}" ItemsSource="{Binding PersonnelList}" ItemDisplayBinding="{Binding Sailor_Name}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.BindingContext>
@@ -81,12 +90,17 @@
                 <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Humidity: </Label>
                 <Label x:Name="HumidityInfo" Grid.Row="5" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.humidity}"/>
                 <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource fieldTitleLabelStyle}">Pressure: </Label>
-                <Label x:Name="PressureInfo" Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}" Text="{Binding Weather.main.pressure}"/>
-                <RadioButton x:Name="conditionsSame" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions shown above are correct." Margin="0,10,0,0"/>
-                <RadioButton x:Name="conditionsDifferent" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions are different. Complete Below:" />
-                <Editor Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter conditions here if conditions are different" Style="{StaticResource fieldTextEditorStyle}"/>
+                <Label x:Name="PressureInfo" Grid.Row="6" Grid.Column="1" Style="{StaticResource fieldTitleLabelStyle}"
+                       Text="{Binding Weather.main.pressure}"/>
+                <RadioButton x:Name="conditionsSame" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                             Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions shown above are correct." Margin="0,10,0,0"/>
+                <RadioButton x:Name="conditionsDifferent" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
+                             Style="{StaticResource fieldRadioSelectorStyle}" Content="The conditions are different. Complete Below:" />
+                <Editor Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Placeholder="Enter conditions here if conditions are different"
+                        Style="{StaticResource fieldTextEditorStyle}"/>
             </Grid>
-            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Next" Style="{StaticResource buttonStyle}" VerticalOptions="StartAndExpand" Clicked="NavigateToBoatSelection" Margin="-40,0,0,0"/>
+            <Button Grid.Row="2" Grid.ColumnSpan="2" Text="Next" Style="{StaticResource buttonStyle}"
+                    VerticalOptions="StartAndExpand" Clicked="NavigateToBoatSelection" Margin="-40,0,0,0"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -19,9 +19,13 @@ namespace WavelengthSailManager
 
         void ToggleBoat(object sender, EventArgs args)
         {
+            // Import the element and cast
             var button = (Button)sender;
+            // Cast to model
             BoatSailor ButtonContext = (BoatSailor)button.BindingContext;
+
             var boatID = ButtonContext.ID;
+            // Switcher for colour
             if (CompetingBoatList.Contains(boatID))
             {
                 CompetingBoatList.Remove(boatID);
@@ -35,6 +39,7 @@ namespace WavelengthSailManager
 
         private void NextPage(object sender, EventArgs e)
         {
+            // Check if there are at least 3 boats
             if (CompetingBoatList.Count < 3)
             {
                 DisplayAlert("Error", "You must select at least 3 boats", "OK");
